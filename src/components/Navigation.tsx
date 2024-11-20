@@ -102,16 +102,16 @@ const Navigation = () => {
 
                 <button
                   onClick={toggleLanguage}
-                  className="p-2 text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-500 hover:rotate-12 transition-all duration-300"
-                  aria-label="Toggle language"
+                  className="p-2 text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors"
+                  aria-label={t('nav.toggleLanguage')}
                 >
                   <Globe size={20} />
                 </button>
 
                 <button
                   onClick={toggleTheme}
-                  className="p-2 text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-500 hover:rotate-12 transition-all duration-300"
-                  aria-label="Toggle dark mode"
+                  className="p-2 text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors"
+                  aria-label={t('nav.toggleTheme')}
                 >
                   {darkMode ? <Sun size={20} /> : <Moon size={20} />}
                 </button>
@@ -119,15 +119,16 @@ const Navigation = () => {
             </div>
 
             <button
-              className="md:hidden text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
+              className="md:hidden p-2 text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-500"
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
 
+        {/* Mobile menu */}
         {isMenuOpen && (
           <div className="md:hidden bg-white dark:bg-gray-800 shadow-lg">
             <div className="px-2 pt-2 pb-3 space-y-1">
@@ -135,33 +136,32 @@ const Navigation = () => {
                 <a
                   key={item.key}
                   href={`#${item.href}`}
-                  className="block px-3 py-2 text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors"
+                  className="block px-3 py-2 text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-500"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {t(item.key)}
                 </a>
               ))}
-              <div className="flex items-center justify-start space-x-4 px-3 py-2 border-t border-gray-200 dark:border-gray-700 mt-2">
+              <div className="flex items-center justify-around px-3 py-2 border-t border-gray-200 dark:border-gray-700">
                 <button
-                  onClick={() => setIsPDFOpen(true)}
-                  className="text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors flex items-center space-x-1"
-                  aria-label="View CV"
+                  onClick={() => {
+                    setIsPDFOpen(true);
+                    setIsMenuOpen(false);
+                  }}
+                  className="p-2 text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-500 flex items-center space-x-1"
                 >
                   <FileText size={20} />
-                  <span className="text-sm font-medium">CV</span>
+                  <span>CV</span>
                 </button>
-
                 <button
                   onClick={toggleLanguage}
-                  className="text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors"
-                  aria-label="Toggle language"
+                  className="p-2 text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-500"
                 >
                   <Globe size={20} />
                 </button>
                 <button
                   onClick={toggleTheme}
-                  className="text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors"
-                  aria-label="Toggle dark mode"
+                  className="p-2 text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-500"
                 >
                   {darkMode ? <Sun size={20} /> : <Moon size={20} />}
                 </button>
@@ -171,18 +171,19 @@ const Navigation = () => {
         )}
       </nav>
 
+      {/* Notification */}
       {notification && (
-        <div className="fixed bottom-4 right-4 bg-white dark:bg-gray-800 text-gray-900 dark:text-white px-4 py-3 rounded-lg shadow-lg flex items-center space-x-2 animate-fade-in">
+        <div className="fixed top-20 right-4 bg-white dark:bg-gray-800 shadow-lg rounded-lg px-4 py-2 flex items-center space-x-2 z-50 animate-fade-in">
           {notificationIcon === 'theme' ? (
-            darkMode ? <Sun size={18} /> : <Moon size={18} />
+            darkMode ? <Moon size={20} /> : <Sun size={20} />
           ) : (
-            <Globe size={18} />
+            <Check size={20} />
           )}
           <span>{notification}</span>
-          <Check size={18} className="text-emerald-500 ml-2" />
         </div>
       )}
 
+      {/* PDF Viewer */}
       <PDFViewer
         pdfUrl="/src/img/Nicolás-paniaguaa.pdf"
         isOpen={isPDFOpen}

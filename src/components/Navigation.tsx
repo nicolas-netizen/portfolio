@@ -185,7 +185,7 @@ const Navigation = () => {
 
       {/* PDF Viewer */}
       <PDFViewer
-        pdfUrl="/src/img/Nicolás-paniaguaa.pdf"
+        pdfUrl="/Nicolás-paniaguaa.pdf"
         isOpen={isPDFOpen}
         onClose={() => setIsPDFOpen(false)}
       />

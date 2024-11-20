@@ -1,7 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { GithubIcon, LinkedinIcon, MailIcon } from 'lucide-react';
-import profileImage from '../img/Nico.jpg';
 
 const Hero = () => {
   const { t } = useTranslation();
@@ -32,11 +31,11 @@ const Hero = () => {
               </a>
             </div>
           </div>
-          <div className="mt-8 md:mt-0 md:w-1/2">
+          <div className="md:w-1/2 mt-8 md:mt-0">
             <img
-              src={profileImage}
-              alt="Profile"
-              className="rounded-full w-64 h-64 object-cover mx-auto border-4 border-emerald-600"
+              src="/img/Nico.jpg"
+              alt="Nicolas Paniagua"
+              className="rounded-full w-64 h-64 object-cover mx-auto shadow-lg"
             />
           </div>
         </div>

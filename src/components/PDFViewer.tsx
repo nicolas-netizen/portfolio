@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { X } from 'lucide-react';
 
 interface PDFViewerProps {
@@ -8,10 +8,30 @@ interface PDFViewerProps {
 }
 
 const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl, isOpen, onClose }) => {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
+  const handleClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
+    <div 
+      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in"
+      onClick={handleClick}
+    >
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-4xl h-[90vh] relative">
         <button
           onClick={onClose}
@@ -20,23 +40,22 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl, isOpen, onClose }) => {
         >
           <X size={24} />
         </button>
-        <object
-          data={pdfUrl}
-          type="application/pdf"
+        <iframe
+          src={pdfUrl}
           className="w-full h-full rounded-lg"
+          title="CV PDF"
         >
           <p>
             Tu navegador no puede mostrar el PDF directamente.{' '}
             <a
               href={pdfUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              download
               className="text-emerald-600 hover:text-emerald-500"
             >
               Haz clic aquí para descargarlo
             </a>
           </p>
-        </object>
+        </iframe>
       </div>
     </div>
   );

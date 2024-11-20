@@ -1,0 +1,80 @@
+{
+  "navigation": {
+    "about": "About",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact",
+    "downloadCv": "Download CV"
+  },
+  "common": {
+    "close": "Close",
+    "loading": "Loading..."
+  },
+  "language": {
+    "notification": "We detected your language. Would you like to switch to your preferred language?",
+    "select": "Select Language"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I'm a passionate software developer with a strong focus on creating engaging and user-friendly applications. I love learning new technologies and solving complex problems.",
+    "downloadCv": "Download CV",
+    "personalDetails": "Personal Details",
+    "funFact": "Fun Facts",
+    "interests": "Interests",
+    "birthday": "Birthday",
+    "phone": "Phone",
+    "email": "Email",
+    "location": "Location",
+    "funFact1": "I started coding at age 15 with Unity game development",
+    "funFact2": "I've participated in multiple game jams and hackathons",
+    "funFact3": "I speak three languages: Spanish, English, and C# 😉",
+    "interest1": "Game Development",
+    "interest2": "Video Games",
+    "interest3": "Problem Solving",
+    "interest4": "Mobile Apps"
+  },
+  "projects": {
+    "title": "My Projects",
+    "technologies": "Technologies Used",
+    "viewSourceCode": "View Source Code",
+    "playDemo": "Play Demo",
+    "watchVideo": "Watch Video",
+    "tech": {
+      "unity": "Unity",
+      "csharp": "C#",
+      "react": "React",
+      "node": "Node.js",
+      "winforms": "Windows Forms",
+      "sql": "SQL Server"
+    },
+    "goblinAttack": {
+      "title": "Goblin Attack",
+      "description": "A tower defense game where you must protect your castle from waves of goblins. Built with Unity and C#."
+    },
+    "webPresentation": {
+      "title": "School Website",
+      "description": "A modern website for Technical School No. 1 Merlo, featuring an interactive presentation of the institution."
+    },
+    "portfolio": {
+      "title": "Windows Forms App",
+      "description": "Creating a Windows Forms application in C# like a pro: following best practices and generating the database from Visual Studio."
+    }
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "description": "Have a question or want to work together? Feel free to send me a message!",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "namePlaceholder": "Enter your name",
+    "emailPlaceholder": "Enter your email",
+    "messagePlaceholder": "Write your message here...",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Message sent successfully!",
+    "error": "Error sending message. Please try again."
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}

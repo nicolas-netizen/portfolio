@@ -1,0 +1,80 @@
+{
+  "navigation": {
+    "about": "Sobre mí",
+    "projects": "Proyectos",
+    "skills": "Habilidades",
+    "contact": "Contacto",
+    "downloadCv": "Descargar CV"
+  },
+  "common": {
+    "close": "Cerrar",
+    "loading": "Cargando..."
+  },
+  "language": {
+    "notification": "Detectamos tu idioma. ¿Te gustaría cambiar al español?",
+    "select": "Seleccionar Idioma"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "description": "Soy un desarrollador de software apasionado con un fuerte enfoque en crear aplicaciones atractivas y fáciles de usar. Me encanta aprender nuevas tecnologías y resolver problemas complejos.",
+    "downloadCv": "Descargar CV",
+    "personalDetails": "Detalles Personales",
+    "funFact": "Datos Curiosos",
+    "interests": "Intereses",
+    "birthday": "Fecha de nacimiento",
+    "phone": "Teléfono",
+    "email": "Correo",
+    "location": "Ubicación",
+    "funFact1": "Empecé a programar a los 15 años con desarrollo de juegos en Unity",
+    "funFact2": "He participado en múltiples game jams y hackathons",
+    "funFact3": "Hablo tres idiomas: Español, Inglés y C# 😉",
+    "interest1": "Desarrollo de Juegos",
+    "interest2": "Videojuegos",
+    "interest3": "Resolución de Problemas",
+    "interest4": "Apps Móviles"
+  },
+  "projects": {
+    "title": "Mis Proyectos",
+    "technologies": "Tecnologías Utilizadas",
+    "viewSourceCode": "Ver Código Fuente",
+    "playDemo": "Jugar Demo",
+    "watchVideo": "Ver Video",
+    "tech": {
+      "unity": "Unity",
+      "csharp": "C#",
+      "react": "React",
+      "node": "Node.js",
+      "winforms": "Windows Forms",
+      "sql": "SQL Server"
+    },
+    "goblinAttack": {
+      "title": "El Ataque de los Goblins",
+      "description": "Un juego de defensa de torres donde debes proteger tu castillo de oleadas de goblins. Construido con Unity y C#."
+    },
+    "webPresentation": {
+      "title": "Sitio Web Escolar",
+      "description": "Un sitio web moderno para la Escuela Técnica N°1 de Merlo, con una presentación interactiva de la institución."
+    },
+    "portfolio": {
+      "title": "Aplicación Windows Forms",
+      "description": "Creando una aplicación Windows Forms en C# como un profesional: siguiendo las mejores prácticas y generando la base de datos desde Visual Studio."
+    }
+  },
+  "contact": {
+    "title": "Contactame",
+    "description": "¿Tienes una pregunta o quieres trabajar juntos? ¡No dudes en enviarme un mensaje!",
+    "name": "Nombre",
+    "email": "Correo",
+    "message": "Mensaje",
+    "namePlaceholder": "Ingresa tu nombre",
+    "emailPlaceholder": "Ingresa tu correo",
+    "messagePlaceholder": "Escribe tu mensaje aquí...",
+    "send": "Enviar Mensaje",
+    "sending": "Enviando...",
+    "success": "¡Mensaje enviado con éxito!",
+    "error": "Error al enviar el mensaje. Por favor, intenta de nuevo."
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados."
+  }
+}

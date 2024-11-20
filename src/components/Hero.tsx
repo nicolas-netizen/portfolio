@@ -35,7 +35,7 @@ const Hero = () => {
             <img
               src="/img/Nico.jpg"
               alt="Nicolas Paniagua"
-              className="rounded-full w-64 h-64 object-cover mx-auto shadow-lg"
+              className="rounded-full w-64 h-64 object-cover mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300"
             />
           </div>
         </div>

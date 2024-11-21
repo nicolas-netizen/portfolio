@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { GithubIcon, LinkedinIcon, MailIcon } from 'lucide-react';
+import Image from 'next/image';
 
 const Hero = () => {
   const { t } = useTranslation();
@@ -32,10 +33,13 @@ const Hero = () => {
             </div>
           </div>
           <div className="md:w-1/2 mt-8 md:mt-0">
-            <img
+            <Image
               src="/img/Nico.jpg"
               alt="Nicolas Paniagua"
-              className="rounded-full w-64 h-64 object-cover mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300"
+              width={256}
+              height={256}
+              className="rounded-full object-cover mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300"
+              priority
             />
           </div>
         </div>

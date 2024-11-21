@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { GithubIcon, LinkedinIcon, MailIcon } from 'lucide-react';
+import profileImage from '../../public/Nico.jpg';
 
 const Hero = () => {
   const { t } = useTranslation();
@@ -33,7 +34,7 @@ const Hero = () => {
           </div>
           <div className="md:w-1/2 mt-8 md:mt-0">
             <img
-              src="/Nico.webp"
+              src={profileImage}
               alt="Nicolas Paniagua"
               className="rounded-full w-64 h-64 object-cover mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300"
             />

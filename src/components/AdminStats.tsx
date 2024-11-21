@@ -10,8 +10,8 @@ const AdminStats = () => {
     setShowStats(isAdminRoute);
     
     // Construir la URL de Vercel Analytics
-    const projectId = 'project-60ykotn6e-nicolas-netizens-projects'; // Tu Project ID de Vercel
-    setAnalyticsUrl(`https://vercel.com/nicolas-netizens-projects/${projectId}/analytics`);
+    const projectId = 'project'; // Project ID correcto
+    setAnalyticsUrl(`https://vercel.com/nicolas-netizen/project/analytics`);
   }, []);
 
   if (!showStats) return null;

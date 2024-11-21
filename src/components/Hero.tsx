@@ -33,7 +33,7 @@ const Hero = () => {
           </div>
           <div className="md:w-1/2 mt-8 md:mt-0">
             <img
-              src="/Nico.jpg"
+              src="/Nico.webp"
               alt="Nicolas Paniagua"
               className="rounded-full w-64 h-64 object-cover mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300"
             />

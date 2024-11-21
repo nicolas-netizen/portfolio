@@ -11,6 +11,7 @@ import CustomCursor from './components/CustomCursor';
 import LoadingScreen from './components/LoadingScreen';
 import ParticleNetwork from './components/ParticleNetwork';
 import AdminStats from './components/AdminStats';
+import AdminNotification from './components/AdminNotification';
 import emailjs from '@emailjs/browser';
 import { ChevronUp } from 'lucide-react';
 
@@ -59,6 +60,7 @@ function App() {
           <CustomCursor />
           <ParticleNetwork />
           <AdminStats />
+          <AdminNotification />
           <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-emerald-50 dark:from-gray-900 dark:to-gray-800">
             <Navigation />
             <main className="flex-grow">

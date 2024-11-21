@@ -29,7 +29,7 @@ function App() {
     // Simular carga inicial
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 1800); // Ajuste sutil del tiempo de carga
 
     return () => {
       window.removeEventListener('scroll', handleScroll);

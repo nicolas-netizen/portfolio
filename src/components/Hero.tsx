@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { GithubIcon, LinkedinIcon, MailIcon } from 'lucide-react';
-import profileImage from '/img/Nico.jpg';
+import profileImage from '../assets/Nico.jpg';
 
 const Hero = () => {
   const { t } = useTranslation();

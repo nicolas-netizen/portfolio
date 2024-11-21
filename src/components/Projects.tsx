@@ -21,7 +21,7 @@ const Projects = () => {
       canvaEmbed: 'https://www.canva.com/design/DAFzm5Hh0uc/Yg5YMCvmctMgyWpj2SERYw/view?embed&autoplay=true&loop=true',
       technologies: ['React', 'Node.js'],
       videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-      sourceUrl: 'https://github.com/Facunnduran/Tecnica1MerloWebFinal',
+      sourceUrl: 'https://github.com/nicolas-netizen/TecnicaWeb',
     },
     {
       title: t('projects.portfolio.title'),

@@ -8,6 +8,13 @@ const Projects = () => {
 
   const projects = [
     {
+      title: t('projects.modernShop.title'),
+      description: t('projects.modernShop.description'),
+      canvaEmbed: 'https://www.canva.com/design/DAGXsx96HaU/gZkJmIKpXBKgHpvBJwv0MA/view?embed&autoplay=true&loop=true',
+      technologies: ['React', 'TypeScript', 'Tailwind'],
+      sourceUrl: 'https://github.com/nicolas-netizen/modernshop-react',
+    },
+    {
       title: t('projects.goblinAttack.title'),
       description: t('projects.goblinAttack.description'),
       canvaEmbed: 'https://www.canva.com/design/DAFqY6rmns8/Yj93o9qlTGiJ9xUHi5KcjQ/view?embed&autoplay=true&loop=true',

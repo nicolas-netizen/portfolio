@@ -1,51 +1,53 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import {
+  SiReact,
+  SiTypescript,
+  SiJavascript,
+  SiHtml5,
+  SiCss3,
+  SiNodedotjs,
+  SiCsharp,
+  SiTailwindcss,
+  SiGit,
+  SiVisualstudiocode,
+  SiVisualstudio,
+  SiUnity,
+  SiPython
+} from 'react-icons/si';
 
-interface Skill {
-  key: string;
-  level: number;
+interface TechSkill {
+  name: string;
+  icon: React.ComponentType;
+  color: string;
 }
-
-const technicalSkills: Skill[] = [
-  { key: 'skills.javascript', level: 60 },
-  { key: 'skills.htmlcss', level: 95 },
-  { key: 'skills.react', level: 70 },
-  { key: 'skills.nodejs', level: 90 },
-  { key: 'skills.typescript', level: 75 },
-  { key: 'skills.python', level: 65 },
-  { key: 'skills.csharp', level: 80 },
-];
-
-const softSkills: Skill[] = [
-  { key: 'skills.communication', level: 90 },
-  { key: 'skills.teamwork', level: 85 },
-  { key: 'skills.problemSolving', level: 80 },
-  { key: 'skills.adaptability', level: 85 },
-  { key: 'skills.creativity', level: 75 },
-  { key: 'skills.timeManagement', level: 88 },
-  { key: 'skills.conflictResolution', level: 65 }
-];
-
-const SkillBar = ({ skill }: { skill: Skill }) => {
-  const { t } = useTranslation();
-  return (
-    <div key={skill.key}>
-      <div className="flex justify-between mb-1">
-        <span className="text-gray-700 dark:text-gray-300">{t(skill.key)}</span>
-        <span className="text-gray-700 dark:text-gray-300">{skill.level}%</span>
-      </div>
-      <div className="skill-bar">
-        <div
-          className="skill-progress"
-          style={{ width: `${skill.level}%` }}
-        ></div>
-      </div>
-    </div>
-  );
-};
 
 const Skills = () => {
   const { t } = useTranslation();
+
+  const techSkills: TechSkill[] = [
+    { name: 'skills.react', icon: SiReact, color: 'text-[#61DAFB]' },
+    { name: 'skills.typescript', icon: SiTypescript, color: 'text-[#3178C6]' },
+    { name: 'skills.javascript', icon: SiJavascript, color: 'text-[#F7DF1E]' },
+    { name: 'skills.htmlcss', icon: SiHtml5, color: 'text-[#E34F26]' },
+    { name: 'skills.nodejs', icon: SiNodedotjs, color: 'text-[#339933]' },
+    { name: 'skills.python', icon: SiPython, color: 'text-[#3776AB]' },
+    { name: 'skills.csharp', icon: SiCsharp, color: 'text-[#239120]' },
+    { name: 'skills.tailwind', icon: SiTailwindcss, color: 'text-[#06B6D4]' },
+    { name: 'skills.git', icon: SiGit, color: 'text-[#F05032]' },
+    { name: 'skills.vscode', icon: SiVisualstudiocode, color: 'text-[#007ACC]' },
+    { name: 'skills.visualstudio', icon: SiVisualstudio, color: 'text-[#5C2D91]' },
+    { name: 'skills.unity', icon: SiUnity, color: 'text-gray-200' }
+  ];
+
+  const softSkills = [
+    'communication',
+    'teamwork',
+    'problemSolving',
+    'adaptability',
+    'creativity',
+    'timeManagement'
+  ];
 
   return (
     <section id="skills" className="py-20 bg-gray-50 dark:bg-gray-900">
@@ -53,26 +55,41 @@ const Skills = () => {
         <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
           {t('skills.title')}
         </h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          <div>
-            <h3 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white">
-              {t('skills.technicalTitle')}
-            </h3>
-            <div className="space-y-4">
-              {technicalSkills.map((skill) => (
-                <SkillBar key={skill.key} skill={skill} />
-              ))}
-            </div>
+
+        {/* Technical Skills */}
+        <div className="mb-16">
+          <h3 className="text-xl font-semibold mb-8 text-center text-gray-900 dark:text-white">
+            {t('skills.technicalTitle')}
+          </h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            {techSkills.map((skill) => (
+              <div
+                key={skill.name}
+                className="group flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              >
+                <skill.icon className={`w-12 h-12 ${skill.color} mb-3 transition-transform group-hover:scale-110`} />
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300 text-center">
+                  {t(skill.name)}
+                </span>
+              </div>
+            ))}
           </div>
-          <div>
-            <h3 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white">
-              {t('skills.softTitle')}
-            </h3>
-            <div className="space-y-4">
-              {softSkills.map((skill) => (
-                <SkillBar key={skill.key} skill={skill} />
-              ))}
-            </div>
+        </div>
+
+        {/* Soft Skills */}
+        <div>
+          <h3 className="text-xl font-semibold mb-8 text-center text-gray-900 dark:text-white">
+            {t('skills.softTitle')}
+          </h3>
+          <div className="flex flex-wrap justify-center gap-4">
+            {softSkills.map((skill) => (
+              <div
+                key={skill}
+                className="px-6 py-3 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-200 rounded-full text-sm font-medium hover:bg-emerald-200 dark:hover:bg-emerald-900/50 transition-colors"
+              >
+                {t(`skills.${skill}`)}
+              </div>
+            ))}
           </div>
         </div>
       </div>

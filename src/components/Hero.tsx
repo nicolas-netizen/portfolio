@@ -20,10 +20,10 @@ const Hero = () => {
               {t('hero.description')}
             </p>
             <div className="flex space-x-4">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="p-2 text-gray-600 hover:text-emerald-600 transition-colors">
+              <a href="https://github.com/nicolas-netizen" target="_blank" rel="noopener noreferrer" className="p-2 text-gray-600 hover:text-emerald-600 transition-colors">
                 <GithubIcon size={24} />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 text-gray-600 hover:text-emerald-600 transition-colors">
+              <a href="https://www.linkedin.com/in/nicolas-paniagua-80150a256" target="_blank" rel="noopener noreferrer" className="p-2 text-gray-600 hover:text-emerald-600 transition-colors">
                 <LinkedinIcon size={24} />
               </a>
               <a href="mailto:nicolas.paniagua05f@gmail.com" className="p-2 text-gray-600 hover:text-emerald-600 transition-colors">
@@ -33,8 +33,9 @@ const Hero = () => {
           </div>
           <div className="md:w-1/2 mt-8 md:mt-0">
             <img
-              src="/img/Nico.jpg"
+              src="/Nico.JPG"
               alt="Nicolas Paniagua"
+              loading="eager"
               className="rounded-full w-64 h-64 object-cover mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300"
             />
           </div>

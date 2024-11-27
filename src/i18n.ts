@@ -67,6 +67,32 @@ i18n
           "skills.creativity": "Creativity",
           "skills.timeManagement": "Time Management",
 
+          // Timeline section
+          "timeline.title": "My Journey",
+          "timeline.education": "Education",
+          "timeline.experience": "Experience",
+          "timeline.present": "Present",
+          "timeline.items": {
+            "technicalDegree": {
+              "title": "IT Technical Degree",
+              "institution": "Instituto San Judas Tadeo",
+              "date": "2016 - 2023",
+              "description": "Completed IT Technical Degree with focus on software development and system administration."
+            },
+            "gamedev": {
+              "title": "Game Developer",
+              "institution": "Unity Projects",
+              "date": "2023 - 2024",
+              "description": "Developed interactive games using Unity and C#, implementing advanced gameplay mechanics and user interfaces."
+            },
+            "fullstack": {
+              "title": "Full Stack Developer",
+              "institution": "Modern Shop Project",
+              "date": "2024 - Present",
+              "description": "Working as a Full Stack Developer using React, TypeScript, and modern web technologies."
+            }
+          },
+
           // Projects section
           "projects.title": "My Projects",
           "projects.viewMore": "View More",
@@ -92,6 +118,40 @@ i18n
           "projects.tech.tailwind": "Tailwind CSS",
           "projects.tech.typescript": "TypeScript",
           "projects.tech.python": "Python",
+
+          // Testimonials section
+          "testimonials.title": "What People Say",
+          "testimonials.subtitle": "Feedback from colleagues and clients",
+          "testimonials.items": {
+            "colleague1": {
+              "name": "Alex Martinez",
+              "role": "Senior Developer",
+              "text": "Nicolas is an exceptional developer with great attention to detail. His ability to solve complex problems and create elegant solutions is remarkable."
+            },
+            "colleague2": {
+              "name": "Maria Garcia",
+              "role": "Project Manager",
+              "text": "Working with Nicolas has been a great experience. He's proactive, dedicated, and always delivers high-quality work on time."
+            },
+            "client1": {
+              "name": "Carlos Rodriguez",
+              "role": "Client",
+              "text": "Nicolas developed an excellent solution for our needs. His technical expertise and professional approach made the project a success."
+            }
+          },
+
+          // GitHub section
+          "github.title": "GitHub Activity",
+          "github.subtitle": "My open source contributions",
+          "github.repos": "Popular Repositories",
+          "github.contributions": "Contributions",
+          "github.viewProfile": "View GitHub Profile",
+          
+          // Blog section
+          "blog.title": "Technical Blog",
+          "blog.subtitle": "Sharing knowledge and experiences",
+          "blog.readMore": "Read More",
+          "blog.viewAll": "View All Posts",
 
           // Contact section
           "contact.title": "Contact Me",
@@ -164,6 +224,32 @@ i18n
           "skills.creativity": "Creatividad",
           "skills.timeManagement": "Gestión del Tiempo",
 
+          // Timeline section
+          "timeline.title": "Mi Trayectoria",
+          "timeline.education": "Educación",
+          "timeline.experience": "Experiencia",
+          "timeline.present": "Presente",
+          "timeline.items": {
+            "technicalDegree": {
+              "title": "Técnico en Informática",
+              "institution": "Instituto San Judas Tadeo",
+              "date": "2016 - 2023",
+              "description": "Completé el título de Técnico en Informática con enfoque en desarrollo de software y administración de sistemas."
+            },
+            "gamedev": {
+              "title": "Desarrollador de Videojuegos",
+              "institution": "Proyectos Unity",
+              "date": "2023 - 2024",
+              "description": "Desarrollé juegos interactivos usando Unity y C#, implementando mecánicas de juego avanzadas e interfaces de usuario."
+            },
+            "fullstack": {
+              "title": "Desarrollador Full Stack",
+              "institution": "Modern Shop Project",
+              "date": "2024 - Presente",
+              "description": "Trabajando como Desarrollador Full Stack utilizando React, TypeScript y tecnologías web modernas."
+            }
+          },
+
           // Projects section
           "projects.title": "Mis Proyectos",
           "projects.viewMore": "Ver Más",
@@ -189,6 +275,40 @@ i18n
           "projects.tech.tailwind": "Tailwind CSS",
           "projects.tech.typescript": "TypeScript",
           "projects.tech.python": "Python",
+
+          // Testimonials section
+          "testimonials.title": "Lo Que Dicen",
+          "testimonials.subtitle": "Comentarios de colegas y clientes",
+          "testimonials.items": {
+            "colleague1": {
+              "name": "Alex Martinez",
+              "role": "Desarrollador Senior",
+              "text": "Nicolas es un desarrollador excepcional con gran atención al detalle. Su capacidad para resolver problemas complejos y crear soluciones elegantes es notable."
+            },
+            "colleague2": {
+              "name": "Maria Garcia",
+              "role": "Project Manager",
+              "text": "Trabajar con Nicolas ha sido una gran experiencia. Es proactivo, dedicado y siempre entrega trabajo de alta calidad a tiempo."
+            },
+            "client1": {
+              "name": "Carlos Rodriguez",
+              "role": "Cliente",
+              "text": "Nicolas desarrolló una excelente solución para nuestras necesidades. Su experiencia técnica y enfoque profesional hicieron del proyecto un éxito."
+            }
+          },
+
+          // GitHub section
+          "github.title": "Actividad en GitHub",
+          "github.subtitle": "Mis contribuciones open source",
+          "github.repos": "Repositorios Populares",
+          "github.contributions": "Contribuciones",
+          "github.viewProfile": "Ver Perfil de GitHub",
+          
+          // Blog section
+          "blog.title": "Blog Técnico",
+          "blog.subtitle": "Compartiendo conocimiento y experiencias",
+          "blog.readMore": "Leer Más",
+          "blog.viewAll": "Ver Todos los Posts",
 
           // Contact section
           "contact.title": "Contáctame",

@@ -12,6 +12,11 @@ import LoadingScreen from './components/LoadingScreen';
 import ParticleNetwork from './components/ParticleNetwork';
 import AdminStats from './components/AdminStats';
 import AdminNotification from './components/AdminNotification';
+import Timeline from './components/Timeline';
+import DynamicBackground from './components/DynamicBackground';
+import Stats from './components/Stats';
+import Testimonials from './components/Testimonials';
+import GitHubActivity from './components/GitHubActivity';
 import emailjs from '@emailjs/browser';
 import { ChevronUp } from 'lucide-react';
 
@@ -57,16 +62,21 @@ function App() {
         <LoadingScreen />
       ) : (
         <>
-          <CustomCursor />
-          <ParticleNetwork />
-          <AdminStats />
-          <AdminNotification />
-          <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-emerald-50 dark:from-gray-900 dark:to-gray-800">
+          <div className="min-h-screen flex flex-col relative bg-gradient-to-br from-gray-50 to-emerald-50 dark:from-gray-900 dark:to-gray-800">
+            <DynamicBackground />
+            <CustomCursor />
+            <ParticleNetwork />
+            <AdminStats />
+            <AdminNotification />
             <Navigation />
             <main className="flex-grow">
               <Hero />
               <About />
               <Skills />
+              <Stats />
+              <Timeline />
+              <GitHubActivity />
+              <Testimonials />
               <Projects />
               <Contact />
             </main>

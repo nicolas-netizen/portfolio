@@ -40,12 +40,15 @@
     "playDemo": "Jugar Demo",
     "watchVideo": "Ver Video",
     "tech": {
+      "react": "React",
+      "nodejs": "Node.js",
+      "typescript": "TypeScript",
+      "tailwind": "Tailwind CSS",
+      "express": "Express",
+      "mongodb": "MongoDB",
       "unity": "Unity",
       "csharp": "C#",
-      "react": "React",
-      "node": "Node.js",
-      "winforms": "Windows Forms",
-      "sql": "SQL Server"
+      "sqlserver": "SQL Server"
     },
     "goblinAttack": {
       "title": "El Ataque de los Goblins",
@@ -58,6 +61,16 @@
     "portfolio": {
       "title": "Aplicación Windows Forms",
       "description": "Creando una aplicación Windows Forms en C# como un profesional: siguiendo las mejores prácticas y generando la base de datos desde Visual Studio."
+    },
+    "solarEnergy": {
+      "title": "Mundo Nuevo",
+      "description": "Mundo Nuevo es una plataforma de comercio electrónico full-stack desarrollada con tecnologías de vanguardia. El proyecto ofrece una experiencia de compra moderna e intuitiva, permitiendo a los usuarios explorar un catálogo de productos dinámico, realizar búsquedas avanzadas, gestionar su carrito de compras y completar transacciones de manera segura."
+    },
+    "nuevoMundo": {
+      "title": "Plataforma E-Commerce Mundo Nuevo",
+      "description": "Una plataforma de comercio electrónico full-stack desarrollada con tecnologías de vanguardia. El proyecto ofrece una experiencia de compra moderna e intuitiva, permitiendo a los usuarios explorar un catálogo de productos dinámico, realizar búsquedas avanzadas, gestionar su carrito de compras y completar transacciones de manera segura.",
+      "sourceUrl": "https://github.com/nicolas-netizen/nuevo-mundo-ecommerce",
+      "demoUrl": "https://solarr-production-fa18.up.railway.app/"
     }
   },
   "contact": {

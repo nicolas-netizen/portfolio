@@ -11,14 +11,21 @@ const Projects = () => {
       title: t('projects.modernShop.title'),
       description: t('projects.modernShop.description'),
       canvaEmbed: 'https://www.canva.com/design/DAGXsx96HaU/gZkJmIKpXBKgHpvBJwv0MA/view?embed&autoplay=true&loop=true',
-      technologies: ['React', 'TypeScript', 'Tailwind'],
+      technologies: [
+        t('projects.tech.react'), 
+        t('projects.tech.typescript'), 
+        t('projects.tech.tailwind')
+      ],
       sourceUrl: 'https://github.com/nicolas-netizen/modernshop-react',
     },
     {
       title: t('projects.goblinAttack.title'),
       description: t('projects.goblinAttack.description'),
       canvaEmbed: 'https://www.canva.com/design/DAFqY6rmns8/Yj93o9qlTGiJ9xUHi5KcjQ/view?embed&autoplay=true&loop=true',
-      technologies: ['Unity', 'C#'],
+      technologies: [
+        t('projects.tech.unity'), 
+        t('projects.tech.csharp')
+      ],
       demoUrl: 'https://nico-pano00.itch.io/el-ataque-de-los-goblins',
       sourceUrl: 'https://github.com/nicolas-netizen/Proyecto-7MO-TowerDefense.git',
     },
@@ -26,7 +33,10 @@ const Projects = () => {
       title: t('projects.webPresentation.title'),
       description: t('projects.webPresentation.description'),
       canvaEmbed: 'https://www.canva.com/design/DAFzm5Hh0uc/Yg5YMCvmctMgyWpj2SERYw/view?embed&autoplay=true&loop=true',
-      technologies: ['React', 'Node.js'],
+      technologies: [
+        t('projects.tech.react'), 
+        t('projects.tech.nodejs')
+      ],
       videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
       sourceUrl: 'https://github.com/nicolas-netizen/TecnicaWeb',
     },
@@ -34,8 +44,25 @@ const Projects = () => {
       title: t('projects.portfolio.title'),
       description: t('projects.portfolio.description'),
       image: 'https://images.unsplash.com/photo-1509395062183-67c5ad6faff9?auto=format&fit=crop&w=800&q=80',
-      technologies: ['C#', 'Windows Forms', 'SQL Server'],
+      technologies: [
+        t('projects.tech.csharp'), 
+        t('projects.tech.sqlserver')
+      ],
       sourceUrl: 'https://github.com/nicolas-netizen/NetWinForm_sql',
+    },
+    {
+      title: t('projects.nuevoMundo.title'),
+      description: t('projects.nuevoMundo.description'),
+      canvaEmbed: 'https://www.canva.com/design/DAGbcNdBRSw/RXqcEGN-uxTJIYYAzSeUnw/view?embed&autoplay=true&loop=true',
+      technologies: [
+        t('projects.tech.react'), 
+        t('projects.tech.nodejs'), 
+        t('projects.tech.tailwind'), 
+        t('projects.tech.express'), 
+        t('projects.tech.mongodb')
+      ],
+      sourceUrl: 'https://github.com/nicolas-netizen/nuevo-mundo-ecommerce',
+      demoUrl: 'https://solarr-production-fa18.up.railway.app/',
     },
   ];
 
@@ -118,12 +145,10 @@ const Projects = () => {
                       key={techIndex}
                       className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-100 rounded-full text-sm"
                     >
-                      {t(`projects.tech.${tech.toLowerCase()}`)}
+                      {t(`projects.tech.${tech}`)}
                     </span>
                   ))}
                 </div>
-                
-                {/* Enlaces debajo de la tarjeta */}
                 <div className="flex justify-between items-center mt-4">
                   {project.demoUrl && (
                     <a
@@ -134,17 +159,6 @@ const Projects = () => {
                     >
                       <PlayCircle className="w-4 h-4" />
                       {t('projects.playDemo')}
-                    </a>
-                  )}
-                  {project.videoUrl && (
-                    <a
-                      href={project.videoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 flex items-center gap-1"
-                    >
-                      <Video className="w-4 h-4" />
-                      {t('projects.watchVideo')}
                     </a>
                   )}
                   {project.sourceUrl && (

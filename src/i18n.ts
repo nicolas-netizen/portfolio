@@ -108,6 +108,8 @@ i18n
           "projects.portfolio.description": "Creating a Windows Forms application in C# like a pro: following best practices and generating the database from Visual Studio.",
           "projects.modernShop.title": "Modern Shop React",
           "projects.modernShop.description": "A modern e-commerce platform built with React, TypeScript and Tailwind CSS. Features a responsive design, dynamic product catalog and shopping cart functionality. Check out the source code on GitHub!",
+          "projects.nuevoMundo.title": "New World E-Commerce Platform",
+          "projects.nuevoMundo.description": "A comprehensive full-stack e-commerce platform developed with cutting-edge technologies. The project offers a modern and intuitive shopping experience, allowing users to explore a dynamic product catalog, perform advanced searches, manage their shopping cart, and complete transactions securely.",
           "projects.technologies": "Technologies Used",
           "projects.tech.unity": "Unity 3D",
           "projects.tech.csharp": "C#",
@@ -118,6 +120,8 @@ i18n
           "projects.tech.tailwind": "Tailwind CSS",
           "projects.tech.typescript": "TypeScript",
           "projects.tech.python": "Python",
+          "projects.tech.express": "Express",
+          "projects.tech.mongodb": "MongoDB",
 
           // Testimonials section
           "testimonials.title": "What People Say",
@@ -265,6 +269,8 @@ i18n
           "projects.portfolio.description": "Creando una aplicación de Windows Forms en C# como un pro: siguiendo las mejores prácticas y generando la base de datos desde Visual Studio.",
           "projects.modernShop.title": "Modern Shop React",
           "projects.modernShop.description": "Una plataforma de comercio electrónico moderna construida con React, TypeScript y Tailwind CSS. Cuenta con un diseño responsive, catálogo de productos dinámico y funcionalidad de carrito de compras. ¡Mira el código fuente en GitHub!",
+          "projects.nuevoMundo.title": "Nuevo Mundo E-Commerce",
+          "projects.nuevoMundo.description": "Una plataforma de comercio electrónico integral desarrollada con tecnologías de vanguardia. El proyecto ofrece una experiencia de compra moderna e intuitiva, permitiendo a los usuarios explorar un catálogo de productos dinámico, realizar búsquedas avanzadas, gestionar su carrito de compras y completar transacciones de manera segura.",
           "projects.technologies": "Tecnologías Utilizadas",
           "projects.tech.unity": "Unity 3D",
           "projects.tech.csharp": "C#",
@@ -275,6 +281,8 @@ i18n
           "projects.tech.tailwind": "Tailwind CSS",
           "projects.tech.typescript": "TypeScript",
           "projects.tech.python": "Python",
+          "projects.tech.express": "Express",
+          "projects.tech.mongodb": "MongoDB",
 
           // Testimonials section
           "testimonials.title": "Lo Que Dicen",

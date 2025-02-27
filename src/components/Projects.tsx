@@ -21,7 +21,7 @@ const Projects = () => {
     {
       title: t('projects.goblinAttack.title'),
       description: t('projects.goblinAttack.description'),
-      canvaEmbed: 'https://www.canva.com/design/DAFqY6rmns8/Yj93o9qlTGiJ9xUHi5KcjQ/view?embed&autoplay=true&loop=true',
+      canvaEmbed: 'https://www.canva.com/design/DAGf4i5Xtdo/DBDs-30z9Iow0E1IvLF4DA/view?embed&autoplay=true&loop=true',
       technologies: [
         t('projects.tech.unity'), 
         t('projects.tech.csharp')

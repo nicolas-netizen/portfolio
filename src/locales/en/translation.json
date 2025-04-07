@@ -55,8 +55,8 @@
       "description": "A tower defense game where you must protect your castle from waves of goblins. Built with Unity and C#."
     },
     "webPresentation": {
-      "title": "School Website",
-      "description": "A modern website for Technical School No. 1 Merlo, featuring an interactive presentation of the institution."
+      "title": "Chapiri Academy",
+      "description": "Modern educational platform for Chapiri Academy. Designed with a focus on student experience, offering course management, interactive educational resources, and progress tracking. Features an admin panel for teachers, class scheduling, and downloadable materials."
     },
     "portfolio": {
       "title": "Windows Forms App",

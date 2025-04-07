@@ -62,6 +62,10 @@
       "title": "Aplicación Windows Forms",
       "description": "Creando una aplicación Windows Forms en C# como un profesional: siguiendo las mejores prácticas y generando la base de datos desde Visual Studio."
     },
+    "psico": {
+      "title": "Academia Chapiri",
+      "description": "Plataforma educativa moderna para la Academia Chapiri. Diseñada con un enfoque en la experiencia del estudiante, ofrece un sistema de gestión de cursos, recursos educativos interactivos y seguimiento del progreso. Incluye un panel de administración para profesores, calendario de clases y materiales descargables."
+    },
     "solarEnergy": {
       "title": "Mundo Nuevo",
       "description": "Mundo Nuevo es una plataforma de comercio electrónico full-stack desarrollada con tecnologías de vanguardia. El proyecto ofrece una experiencia de compra moderna e intuitiva, permitiendo a los usuarios explorar un catálogo de productos dinámico, realizar búsquedas avanzadas, gestionar su carrito de compras y completar transacciones de manera segura."

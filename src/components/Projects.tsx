@@ -19,26 +19,29 @@ const Projects = () => {
 
   const projects: ProjectType[] = [
     {
-      title: t('projects.modernShop.title'),
-      description: t('projects.modernShop.description'),
+      title: t('projects.chapiri.title'),
+      description: t('projects.chapiri.description'),
       image: '/images/web1.png',
+      websiteUrl: 'https://psico-olive.vercel.app/',
+      demoUrl: 'https://psico-olive.vercel.app/',
       technologies: [
         t('projects.tech.react'), 
         t('projects.tech.typescript'), 
         t('projects.tech.tailwind')
       ],
-      sourceUrl: 'https://github.com/nicolas-netizen/modernshop-react',
+      sourceUrl: 'https://github.com/nicolas-netizen/psico',
     },
     {
       title: t('projects.goblinAttack.title'),
       description: t('projects.goblinAttack.description'),
-      image: '/images/web2.png',
+      image: '/images/Screenshot_2.png',
       technologies: [
         t('projects.tech.unity'), 
         t('projects.tech.csharp')
       ],
       demoUrl: 'https://nico-pano00.itch.io/el-ataque-de-los-goblins',
       sourceUrl: 'https://github.com/nicolas-netizen/Proyecto-7MO-TowerDefense.git',
+      videoUrl: 'https://www.canva.com/design/DAF-kxKxGzs/watch',
     },
     {
       title: t('projects.webPresentation.title'),
@@ -54,12 +57,13 @@ const Projects = () => {
     {
       title: t('projects.portfolio.title'),
       description: t('projects.portfolio.description'),
-      image: '/images/Screenshot_2.png',
+      image: '/images/web2.png',
       technologies: [
         t('projects.tech.csharp'), 
         t('projects.tech.sqlserver')
       ],
       sourceUrl: 'https://github.com/nicolas-netizen/NetWinForm_sql',
+      videoUrl: 'https://www.canva.com/design/DAF-kxKxGzs/watch',
     },
     {
       title: t('projects.nuevoMundo.title'),

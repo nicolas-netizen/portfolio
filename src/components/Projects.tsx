@@ -3,14 +3,25 @@ import { useTranslation } from 'react-i18next';
 import Card3D from './Card3D';
 import { Github, PlayCircle, Video } from 'lucide-react';
 
+interface ProjectType {
+  title: string;
+  description: string;
+  websiteUrl?: string;
+  image?: string;
+  technologies: string[];
+  sourceUrl?: string;
+  demoUrl?: string;
+  videoUrl?: string;
+}
+
 const Projects = () => {
   const { t } = useTranslation();
 
-  const projects = [
+  const projects: ProjectType[] = [
     {
       title: t('projects.modernShop.title'),
       description: t('projects.modernShop.description'),
-      canvaEmbed: 'https://www.canva.com/design/DAGXsx96HaU/gZkJmIKpXBKgHpvBJwv0MA/view?embed&autoplay=true&loop=true',
+      image: '/images/web1.png',
       technologies: [
         t('projects.tech.react'), 
         t('projects.tech.typescript'), 
@@ -21,7 +32,7 @@ const Projects = () => {
     {
       title: t('projects.goblinAttack.title'),
       description: t('projects.goblinAttack.description'),
-      canvaEmbed: 'https://www.canva.com/design/DAGf4i5Xtdo/DBDs-30z9Iow0E1IvLF4DA/view?embed&autoplay=true&loop=true',
+      image: '/images/web2.png',
       technologies: [
         t('projects.tech.unity'), 
         t('projects.tech.csharp')
@@ -32,7 +43,7 @@ const Projects = () => {
     {
       title: t('projects.webPresentation.title'),
       description: t('projects.webPresentation.description'),
-      canvaEmbed: 'https://www.canva.com/design/DAFzm5Hh0uc/Yg5YMCvmctMgyWpj2SERYw/view?embed&autoplay=true&loop=true',
+      image: '/images/web3.png',
       technologies: [
         t('projects.tech.react'), 
         t('projects.tech.nodejs')
@@ -43,7 +54,7 @@ const Projects = () => {
     {
       title: t('projects.portfolio.title'),
       description: t('projects.portfolio.description'),
-      image: 'https://images.unsplash.com/photo-1509395062183-67c5ad6faff9?auto=format&fit=crop&w=800&q=80',
+      image: '/images/Screenshot_2.png',
       technologies: [
         t('projects.tech.csharp'), 
         t('projects.tech.sqlserver')
@@ -53,7 +64,8 @@ const Projects = () => {
     {
       title: t('projects.nuevoMundo.title'),
       description: t('projects.nuevoMundo.description'),
-      canvaEmbed: 'https://www.canva.com/design/DAGbcNdBRSw/RXqcEGN-uxTJIYYAzSeUnw/view?embed&autoplay=true&loop=true',
+      websiteUrl: 'https://nuevomundosolar.com/',
+      image: '/images/hero.png',
       technologies: [
         t('projects.tech.react'), 
         t('projects.tech.nodejs'), 
@@ -62,7 +74,7 @@ const Projects = () => {
         t('projects.tech.mongodb')
       ],
       sourceUrl: 'https://github.com/nicolas-netizen/nuevo-mundo-ecommerce',
-      demoUrl: 'https://solarr-production-fa18.up.railway.app/',
+      demoUrl: 'https://nuevomundosolar.com/',
     },
   ];
 
@@ -78,60 +90,63 @@ const Projects = () => {
               key={index}
               className="group bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
             >
-              {project.canvaEmbed ? (
-                <div className="relative w-full pt-[56.25%]">
-                  <iframe
-                    loading="lazy"
-                    className="absolute inset-0 w-full h-full border-none"
-                    src={project.canvaEmbed}
-                    allowFullScreen
-                    title={project.title}
-                  ></iframe>
-                </div>
-              ) : (
-                <div className="relative aspect-video">
+              <div className="relative aspect-video overflow-hidden">
+                {project.websiteUrl ? (
+                  <div className="relative w-full h-full transform group-hover:scale-105 transition-all duration-500 ease-in-out cursor-pointer">
+                    <div className="absolute inset-0 bg-black/50 group-hover:bg-transparent transition-colors duration-300 z-10"></div>
+                    <iframe
+                      src={project.websiteUrl}
+                      title={project.title}
+                      className="absolute inset-0 w-full h-full border-none pointer-events-auto"
+                      loading="lazy"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-top-navigation"
+                    />
+
+                  </div>
+                ) : (
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
-                    {project.sourceUrl && (
-                      <a
-                        href={project.sourceUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-white hover:text-emerald-400 transition-colors"
-                        aria-label={t('projects.viewSourceCode')}
-                      >
-                        <Github className="w-8 h-8" />
-                      </a>
-                    )}
-                    {project.demoUrl && (
-                      <a
-                        href={project.demoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-white hover:text-emerald-400 transition-colors"
-                        aria-label={t('projects.playDemo')}
-                      >
-                        <PlayCircle className="w-8 h-8" />
-                      </a>
-                    )}
-                    {project.videoUrl && (
-                      <a
-                        href={project.videoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-white hover:text-emerald-400 transition-colors"
-                        aria-label={t('projects.watchVideo')}
-                      >
-                        <Video className="w-8 h-8" />
-                      </a>
-                    )}
-                  </div>
+                )}
+                <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
+                  {project.sourceUrl && (
+                    <a
+                      href={project.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white hover:text-emerald-400 transition-colors"
+                      aria-label={t('projects.viewSourceCode')}
+                    >
+                      <Github className="w-8 h-8" />
+                    </a>
+                  )}
+                  {project.demoUrl && (
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white hover:text-emerald-400 transition-colors"
+                      aria-label={t('projects.playDemo')}
+                    >
+                      <PlayCircle className="w-8 h-8" />
+                    </a>
+                  )}
+                  {project.videoUrl && (
+                    <a
+                      href={project.videoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white hover:text-emerald-400 transition-colors"
+                      aria-label={t('projects.watchVideo')}
+                    >
+                      <Video className="w-8 h-8" />
+                    </a>
+                  )}
                 </div>
-              )}
+              </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2 hover-underline-animation">
                   {project.title}
@@ -145,7 +160,7 @@ const Projects = () => {
                       key={techIndex}
                       className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-100 rounded-full text-sm"
                     >
-                      {t(`projects.tech.${tech}`)}
+                      {tech}
                     </span>
                   ))}
                 </div>

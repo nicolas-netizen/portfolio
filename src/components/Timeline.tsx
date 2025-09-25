@@ -45,13 +45,13 @@ const Timeline = () => {
   };
 
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-900">
+    <section className="py-20 theme-surface">
       <div className="max-w-7xl mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white relative"
+          className="text-3xl font-bold text-center mb-12 theme-text relative"
         >
           {t('timeline.title')}
           <motion.div

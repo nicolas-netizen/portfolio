@@ -160,8 +160,8 @@ const themes: Record<Theme, ThemeConfig> = {
 };
 
 export const useTheme = () => {
-  const [currentTheme, setCurrentTheme] = useState<Theme>('light');
-  const [isDark, setIsDark] = useState(false);
+  const [currentTheme, setCurrentTheme] = useState<Theme>('dark');
+  const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
     // Load saved theme from localStorage
@@ -183,7 +183,14 @@ export const useTheme = () => {
   useEffect(() => {
     // Apply theme to document
     const root = document.documentElement;
+    const body = document.body;
     const theme = themes[currentTheme];
+    
+    // Remove all existing theme classes
+    body.classList.remove('theme-light', 'theme-dark', 'theme-emerald', 'theme-blue', 'theme-purple', 'theme-orange', 'theme-pink', 'theme-cyan');
+    
+    // Add current theme class
+    body.classList.add(`theme-${currentTheme}`);
     
     // Set CSS custom properties
     root.style.setProperty('--color-primary', theme.colors.primary);
@@ -204,6 +211,14 @@ export const useTheme = () => {
     // Save to localStorage
     localStorage.setItem('portfolio-theme', currentTheme);
     localStorage.setItem('portfolio-dark-mode', isDark.toString());
+
+    // Force re-render of components
+    const event = new CustomEvent('themeChanged', { 
+      detail: { theme: currentTheme, isDark } 
+    });
+    window.dispatchEvent(event);
+    
+    console.log(`Theme applied: ${currentTheme}, Dark mode: ${isDark}`);
   }, [currentTheme, isDark]);
 
   const changeTheme = (theme: Theme) => {

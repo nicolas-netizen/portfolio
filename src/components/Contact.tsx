@@ -48,7 +48,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-white dark:bg-gray-800">
+    <section id="contact" className="py-20 theme-surface">
       <div className="max-w-4xl mx-auto px-4">
         <motion.div 
           className="text-center mb-12"
@@ -58,7 +58,7 @@ const Contact = () => {
           viewport={{ once: true }}
         >
           <motion.h2 
-            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4 relative"
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold theme-text mb-4 relative"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}

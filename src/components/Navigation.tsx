@@ -4,15 +4,16 @@ import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useSpring } from 'motion/react';
 import PDFViewer from './PDFViewer';
 import ThemeSelector from './ThemeSelector';
+import { useTheme } from '../hooks/useTheme';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
   const [notification, setNotification] = useState('');
   const [notificationIcon, setNotificationIcon] = useState<'theme' | 'language' | null>(null);
   const [isPDFOpen, setIsPDFOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { t, i18n } = useTranslation();
+  const { isDark, toggleDarkMode } = useTheme();
 
   // Scroll progress
   const { scrollYProgress } = useScroll();
@@ -31,27 +32,11 @@ const Navigation = () => {
   ];
 
   useEffect(() => {
-    // Cargar preferencias guardadas
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      setDarkMode(true);
-    }
-
     const savedLang = localStorage.getItem('language');
     if (savedLang) {
       i18n.changeLanguage(savedLang);
     }
   }, [i18n]);
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [darkMode]);
 
   // Handle scroll effect
   useEffect(() => {
@@ -82,9 +67,9 @@ const Navigation = () => {
   };
 
   const toggleTheme = () => {
-    setDarkMode(!darkMode);
+    toggleDarkMode();
     showNotification(
-      darkMode ? 'Light mode enabled' : 'Dark mode enabled',
+      isDark ? 'Light mode enabled' : 'Dark mode enabled',
       'theme'
     );
   };
@@ -93,15 +78,15 @@ const Navigation = () => {
     <>
       {/* Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-emerald-600 origin-left z-50"
+        className="fixed top-0 left-0 right-0 h-1 theme-primary-bg origin-left z-[101]"
         style={{ scaleX }}
       />
       
       <motion.nav 
-        className={`fixed w-full z-40 transition-all duration-300 ${
+        className={`fixed w-full z-[100] transition-all duration-300 ${
           scrolled 
-            ? 'bg-white/95 dark:bg-gray-800/95 backdrop-blur-md shadow-lg' 
-            : 'bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-sm'
+            ? 'theme-surface/95 backdrop-blur-md shadow-lg' 
+            : 'theme-surface/80 backdrop-blur-sm shadow-sm'
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -127,7 +112,10 @@ const Navigation = () => {
               
               <div className="flex items-center space-x-2 border-l pl-2 border-gray-200 dark:border-gray-700">
                 <button
-                  onClick={() => setIsPDFOpen(true)}
+                  onClick={() => {
+                    console.log('CV button clicked, opening PDF viewer');
+                    setIsPDFOpen(true);
+                  }}
                   className="p-2 text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-500 hover:rotate-12 transition-all duration-300 flex items-center space-x-1"
                   aria-label="View CV"
                 >
@@ -159,13 +147,13 @@ const Navigation = () => {
 
         {/* Mobile menu */}
         {isMenuOpen && (
-          <div className="md:hidden bg-white dark:bg-gray-800 shadow-lg">
+          <div className="md:hidden theme-surface shadow-lg relative z-[99]">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {menuItems.map((item) => (
                 <a
                   key={item.key}
                   href={`#${item.href}`}
-                  className="block px-3 py-2 text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-500"
+                  className="block px-3 py-2 theme-text hover:text-emerald-600 dark:hover:text-emerald-500"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {t(item.key)}
@@ -177,18 +165,18 @@ const Navigation = () => {
                     setIsPDFOpen(true);
                     setIsMenuOpen(false);
                   }}
-                  className="p-2 text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-500 flex items-center space-x-1"
+                  className="p-2 theme-text hover:text-emerald-600 dark:hover:text-emerald-500 flex items-center space-x-1"
                 >
                   <FileText size={20} />
                   <span>CV</span>
                 </button>
                 <button
                   onClick={toggleLanguage}
-                  className="p-2 text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-500"
+                  className="p-2 theme-text hover:text-emerald-600 dark:hover:text-emerald-500"
                 >
                   <Globe size={20} />
                 </button>
-                <div onClick={() => setIsMenuOpen(false)}>
+                <div onClick={(e) => e.stopPropagation()}>
                   <ThemeSelector />
                 </div>
               </div>
@@ -199,19 +187,18 @@ const Navigation = () => {
 
       {/* Notification */}
       {notification && (
-        <div className="fixed top-20 right-4 bg-white dark:bg-gray-800 shadow-lg rounded-lg px-4 py-2 flex items-center space-x-2 z-50 animate-fade-in">
+        <div className="fixed top-20 right-4 theme-surface shadow-lg rounded-lg px-4 py-2 flex items-center space-x-2 z-50 animate-fade-in">
           {notificationIcon === 'theme' ? (
-            darkMode ? <Moon size={20} /> : <Sun size={20} />
+            isDark ? <Moon size={20} /> : <Sun size={20} />
           ) : (
             <Check size={20} />
           )}
-          <span>{notification}</span>
+          <span className="theme-text">{notification}</span>
         </div>
       )}
 
       {/* PDF Viewer */}
       <PDFViewer
-        pdfUrl="/Nicolás-paniaguaa.pdf#toolbar=0"
         isOpen={isPDFOpen}
         onClose={() => setIsPDFOpen(false)}
       />

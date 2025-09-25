@@ -14,13 +14,13 @@ const InteractiveTerminal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [history, setHistory] = useState<Array<{ command: string; output: string; timestamp: Date }>>([]);
-  const [currentPath, setCurrentPath] = useState('~/portfolio');
+  const [currentPath] = useState('~/portfolio');
   const [mode, setMode] = useState<'terminal' | 'chat'>('terminal');
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
   
   // AI Chat hook
-  const { messages, isLoading, error, sendMessage, clearChat } = useAIChat();
+  const { messages, isLoading, error, sendMessage } = useAIChat();
 
   const commands: Command[] = [
     {
@@ -83,7 +83,7 @@ const InteractiveTerminal = () => {
     },
     {
       name: 'chat',
-      description: 'Switch to AI chat mode',
+      description: 'Switch to AI chat mode 🤖',
       action: () => {
         addToHistory('chat', 'Switching to AI chat mode...');
         setMode('chat');
@@ -202,23 +202,40 @@ Feel free to reach out for collaborations or opportunities!`;
 
   if (!isOpen) {
     return (
-      <motion.button
+      <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 bg-gray-900 text-white p-3 sm:p-4 rounded-full shadow-lg hover:bg-gray-800 transition-colors z-50"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ delay: 2 }}
+        className="bg-emerald-500 hover:bg-emerald-600 text-white rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 group relative flex items-center justify-center border-2 border-emerald-400 hover:border-emerald-300 ring-2 ring-emerald-300/50 hover:ring-emerald-200/70"
+        style={{
+          position: 'fixed',
+          bottom: '12px',
+          right: '12px',
+          zIndex: 9998,
+          width: '56px',
+          height: '56px',
+          maxWidth: '56px',
+          maxHeight: '56px',
+          display: 'block',
+          visibility: 'visible',
+          opacity: 1,
+        }}
+        data-terminal-button
       >
-        <Terminal size={20} className="sm:w-6 sm:h-6" />
-      </motion.button>
+        <Terminal size={26} className="text-white drop-shadow-lg" />
+        {/* AI Chat Indicator */}
+        <div className="absolute -top-3 -right-3 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center animate-pulse shadow-lg border-2 border-white">
+          <Bot size={14} className="text-white" />
+        </div>
+        {/* Tooltip */}
+        <div className="absolute bottom-full right-0 mb-2 px-3 py-1 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap shadow-lg">
+          Terminal + AI Chat 🤖
+        </div>
+      </button>
     );
   }
 
   return (
     <motion.div
-      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-[calc(100vw-2rem)] sm:w-96 h-80 sm:h-80 bg-gray-900 rounded-lg shadow-2xl z-50 flex flex-col max-w-sm sm:max-w-none"
+      className="fixed bottom-12 right-6 sm:bottom-12 sm:right-8 w-[calc(100vw-2rem)] sm:w-96 h-80 sm:h-80 bg-gray-900 rounded-lg shadow-2xl z-[70] flex flex-col max-w-sm sm:max-w-none terminal-open"
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       exit={{ scale: 0, opacity: 0 }}
@@ -234,7 +251,14 @@ Feel free to reach out for collaborations or opportunities!`;
           <span className="text-xs sm:text-sm text-gray-300 ml-1 sm:ml-2">
             {mode === 'chat' ? 'AI Chat' : 'Terminal'}
           </span>
-          {mode === 'chat' && <Bot size={12} className="sm:w-4 sm:h-4 text-blue-400" />}
+          {mode === 'chat' ? (
+            <Bot size={12} className="sm:w-4 sm:h-4 text-blue-400" />
+          ) : (
+            <div className="flex items-center gap-1">
+              <MessageCircle size={12} className="sm:w-4 sm:h-4 text-green-400" />
+              <span className="text-xs text-green-400">AI Available</span>
+            </div>
+          )}
         </div>
         <div className="flex items-center gap-2">
           <button
@@ -264,7 +288,13 @@ Feel free to reach out for collaborations or opportunities!`;
               <span className="text-blue-400 text-xs sm:text-sm">Welcome to Nicolas's Interactive Terminal!</span>
             </div>
             <div className="mb-1 sm:mb-2">
-              <span className="text-yellow-400 text-xs sm:text-sm">Type 'help' to see available commands or 'chat' for AI mode.</span>
+              <span className="text-yellow-400 text-xs sm:text-sm">Type 'help' to see available commands or</span>
+            </div>
+            <div className="mb-1 sm:mb-2">
+              <span className="text-green-400 text-xs sm:text-sm font-bold">'chat' for AI mode 🤖</span>
+            </div>
+            <div className="mb-1 sm:mb-2">
+              <span className="text-purple-400 text-xs sm:text-sm">💬 Ask me anything about Nicolas's work!</span>
             </div>
             
             <AnimatePresence>

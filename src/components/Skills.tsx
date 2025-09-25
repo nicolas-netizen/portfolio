@@ -10,10 +10,10 @@ import {
   SiCsharp,
   SiTailwindcss,
   SiGit,
-  SiVisualstudiocode,
-  SiVisualstudio,
   SiUnity,
-  SiPython
+  SiPython,
+  SiPostman,
+  SiJest
 } from 'react-icons/si';
 import { motion } from 'motion/react';
 
@@ -36,8 +36,8 @@ const Skills = () => {
     { name: 'skills.csharp', icon: SiCsharp, color: 'text-[#239120]' },
     { name: 'skills.tailwind', icon: SiTailwindcss, color: 'text-[#06B6D4]' },
     { name: 'skills.git', icon: SiGit, color: 'text-[#F05032]' },
-    { name: 'skills.vscode', icon: SiVisualstudiocode, color: 'text-[#007ACC]' },
-    { name: 'skills.visualstudio', icon: SiVisualstudio, color: 'text-[#5C2D91]' },
+    { name: 'skills.postman', icon: SiPostman, color: 'text-[#FF6C37]' },
+    { name: 'skills.jest', icon: SiJest, color: 'text-[#C21325]' },
     { name: 'skills.unity', icon: SiUnity, color: 'text-gray-200' }
   ];
 
@@ -51,10 +51,10 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-gray-50 dark:bg-gray-900">
+    <section id="skills" className="py-20 theme-surface">
       <div className="max-w-7xl mx-auto px-4">
         <motion.h2 
-          className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white relative"
+          className="text-3xl font-bold text-center mb-12 theme-text relative"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -87,11 +87,11 @@ const Skills = () => {
           >
             {t('skills.technicalTitle')}
           </motion.h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
             {techSkills.map((skill, index) => (
               <motion.div
                 key={skill.name}
-                className="group flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className="group flex flex-col items-center p-3 sm:p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 initial={{ opacity: 0, y: 30, scale: 0.8 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ 
@@ -111,9 +111,9 @@ const Skills = () => {
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <skill.icon className={`w-12 h-12 ${skill.color} mb-3 transition-transform group-hover:scale-110`} />
+                  <skill.icon className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 ${skill.color} mb-2 sm:mb-3 transition-transform group-hover:scale-110`} />
                 </motion.div>
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-300 text-center">
+                <span className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 text-center leading-tight">
                   {t(skill.name)}
                 </span>
               </motion.div>
@@ -137,11 +137,11 @@ const Skills = () => {
           >
             {t('skills.softTitle')}
           </motion.h3>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
             {softSkills.map((skill, index) => (
               <motion.div
                 key={skill}
-                className="px-6 py-3 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-200 rounded-full text-sm font-medium hover:bg-emerald-200 dark:hover:bg-emerald-900/50 transition-colors"
+                className="px-4 py-2 sm:px-6 sm:py-3 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-200 rounded-full text-xs sm:text-sm font-medium hover:bg-emerald-200 dark:hover:bg-emerald-900/50 transition-colors"
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ 

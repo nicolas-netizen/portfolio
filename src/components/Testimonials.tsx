@@ -39,16 +39,16 @@ const Testimonials = () => {
   const currentTestimonial = testimonials[currentIndex];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-emerald-50 dark:from-gray-900 dark:to-gray-800">
-      <div className="max-w-6xl mx-auto px-4">
+    <section className="py-12 sm:py-16 md:py-20 theme-bg">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-12 md:mb-16"
         >
           <motion.h2 
-            className="text-4xl font-bold text-gray-900 dark:text-white mb-4 relative"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold theme-text mb-3 sm:mb-4 relative"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -64,7 +64,7 @@ const Testimonials = () => {
             />
           </motion.h2>
           <motion.p 
-            className="text-xl text-gray-600 dark:text-gray-400"
+            className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -88,7 +88,7 @@ const Testimonials = () => {
                 type: "spring",
                 stiffness: 100
               }}
-              className="bg-white dark:bg-gray-800 p-8 md:p-12 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 max-w-4xl mx-auto"
+              className="bg-white dark:bg-gray-800 p-4 sm:p-6 md:p-8 lg:p-12 rounded-xl sm:rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 max-w-4xl mx-auto"
             >
               <div className="text-center">
                 <motion.div
@@ -97,11 +97,11 @@ const Testimonials = () => {
                   transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
                   className="inline-block mb-6"
                 >
-                  <Quote className="w-16 h-16 text-emerald-500" />
+                  <Quote className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-emerald-500" />
                 </motion.div>
                 
                 <motion.blockquote 
-                  className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 leading-relaxed italic"
+                  className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 dark:text-gray-300 mb-6 sm:mb-8 leading-relaxed italic"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
@@ -110,19 +110,19 @@ const Testimonials = () => {
                 </motion.blockquote>
 
                 <motion.div 
-                  className="flex flex-col md:flex-row items-center justify-center gap-4"
+                  className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.6 }}
                 >
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-r from-emerald-500 to-blue-500 flex items-center justify-center text-white font-bold text-2xl shadow-lg">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-r from-emerald-500 to-blue-500 flex items-center justify-center text-white font-bold text-lg sm:text-xl md:text-2xl shadow-lg">
                     {t(`testimonials.items.${currentTestimonial}.name`).charAt(0)}
                   </div>
-                  <div className="text-center md:text-left">
-                    <p className="text-gray-900 dark:text-white font-bold text-lg">
+                  <div className="text-center sm:text-left">
+                    <p className="text-gray-900 dark:text-white font-bold text-base sm:text-lg">
                       {t(`testimonials.items.${currentTestimonial}.name`)}
                     </p>
-                    <p className="text-emerald-600 dark:text-emerald-400 font-medium">
+                    <p className="text-emerald-600 dark:text-emerald-400 font-medium text-sm sm:text-base">
                       {t(`testimonials.items.${currentTestimonial}.role`)}
                     </p>
                   </div>
@@ -134,30 +134,30 @@ const Testimonials = () => {
           {/* Navigation Arrows */}
           <motion.button
             onClick={prevTestimonial}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-600 hover:border-emerald-500 dark:hover:border-emerald-400"
+            className="absolute left-1 sm:left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-gray-800 p-2 sm:p-2 md:p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-600 hover:border-emerald-500 dark:hover:border-emerald-400"
             whileHover={{ scale: 1.1, x: -5 }}
             whileTap={{ scale: 0.95 }}
           >
-            <ChevronLeft className="w-6 h-6 text-gray-600 dark:text-gray-400" />
+            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-gray-600 dark:text-gray-400" />
           </motion.button>
 
           <motion.button
             onClick={nextTestimonial}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-600 hover:border-emerald-500 dark:hover:border-emerald-400"
+            className="absolute right-1 sm:right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-gray-800 p-2 sm:p-2 md:p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-600 hover:border-emerald-500 dark:hover:border-emerald-400"
             whileHover={{ scale: 1.1, x: 5 }}
             whileTap={{ scale: 0.95 }}
           >
-            <ChevronRight className="w-6 h-6 text-gray-600 dark:text-gray-400" />
+            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-gray-600 dark:text-gray-400" />
           </motion.button>
         </div>
 
         {/* Dots Indicator */}
-        <div className="flex justify-center mt-8 space-x-2">
+        <div className="flex justify-center mt-6 sm:mt-8 space-x-2">
           {testimonials.map((_, index) => (
             <motion.button
               key={index}
               onClick={() => goToTestimonial(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
                 index === currentIndex
                   ? 'bg-emerald-500 scale-125'
                   : 'bg-gray-300 dark:bg-gray-600 hover:bg-emerald-400'
@@ -169,10 +169,10 @@ const Testimonials = () => {
         </div>
 
         {/* Auto-play Toggle */}
-        <div className="flex justify-center mt-6">
+        <div className="flex justify-center mt-4 sm:mt-6">
           <motion.button
             onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+            className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
               isAutoPlaying
                 ? 'bg-emerald-500 text-white'
                 : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'

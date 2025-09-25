@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Download, Code, Gamepad2, Brain, Smartphone, Sparkles, User, Calendar, Phone, Mail, MapPin, Award, Target, Heart } from 'lucide-react';
 import { motion } from 'motion/react';
@@ -7,13 +7,9 @@ const About = () => {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState<'details' | 'facts' | 'interests'>('details');
 
-  const handleDownloadCV = () => {
-    const link = document.createElement('a');
-    link.href = '/src/img/Nicolás-paniaguaa.pdf';
-    link.download = 'Nicolas-Paniagua-CV.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const handleViewCV = () => {
+    // Abrir el CV en una nueva pestaña para visualizarlo
+    window.open('/Nicolas-Paniagua-CV.pdf', '_blank', 'noopener,noreferrer');
   };
 
   const renderTabContent = () => {
@@ -34,7 +30,7 @@ const About = () => {
             ].map((item, index) => (
               <motion.div
                 key={item.label}
-                className="flex items-center space-x-3 sm:space-x-4 p-3 sm:p-4 lg:p-5 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 rounded-2xl hover:shadow-xl transition-all duration-300 group border border-gray-200 dark:border-gray-600"
+                className="flex items-center space-x-3 sm:space-x-4 p-3 sm:p-4 lg:p-5 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 rounded-2xl hover:shadow-xl transition-all duration-300 group border border-gray-200 dark:border-gray-600 min-h-[60px] sm:min-h-[70px]"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
@@ -127,7 +123,7 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="py-20 bg-white dark:bg-gray-800">
+    <section id="about" className="py-20 theme-bg">
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
           className="text-center mb-16"
@@ -137,7 +133,7 @@ const About = () => {
           viewport={{ once: true }}
         >
           <motion.h2 
-            className="text-5xl font-bold mb-4 bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent relative"
+            className="text-5xl font-bold mb-4 theme-gradient-text relative"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -145,7 +141,7 @@ const About = () => {
           >
             {t('about.title')}
             <motion.div
-              className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full"
+              className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 theme-gradient rounded-full"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
@@ -153,7 +149,7 @@ const About = () => {
             />
           </motion.h2>
           <motion.p 
-            className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
+            className="text-xl theme-text-secondary max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -173,8 +169,8 @@ const About = () => {
             viewport={{ once: true }}
           >
             <motion.div 
-              className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-3xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50"
-              whileHover={{ y: -8, scale: 1.02, shadow: "0 25px 50px rgba(0,0,0,0.15)" }}
+              className="theme-surface/90 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-3xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50"
+              whileHover={{ y: -8, scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
               <motion.p 
@@ -188,21 +184,21 @@ const About = () => {
               </motion.p>
               
               <motion.div 
-                className="flex flex-wrap gap-4"
+                className="flex flex-wrap gap-3 sm:gap-4"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
                 viewport={{ once: true }}
               >
                 <motion.button 
-                  onClick={handleDownloadCV}
-                  className="group flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-2xl font-semibold hover:from-emerald-700 hover:to-emerald-800 transition-all duration-300 shadow-lg hover:shadow-emerald-500/25 relative overflow-hidden w-full sm:w-auto"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
+                  onClick={handleViewCV}
+                  className="group flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 md:px-8 py-3 sm:py-4 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-xl sm:rounded-2xl font-semibold hover:from-emerald-700 hover:to-emerald-800 transition-all duration-300 shadow-lg hover:shadow-emerald-500/25 relative overflow-hidden w-full text-sm sm:text-base"
+                  whileHover={{ scale: 1.02, y: -1 }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-blue-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                  <Download className="w-5 h-5 group-hover:animate-bounce relative z-10" />
-                  <span className="relative z-10">{t('about.downloadCv')}</span>
+                  <Download className="w-4 h-4 sm:w-5 sm:h-5 group-hover:animate-bounce relative z-10" />
+                  <span className="relative z-10">{t('about.viewCv')}</span>
                 </motion.button>
               </motion.div>
             </motion.div>
@@ -218,7 +214,7 @@ const About = () => {
           >
             <motion.div 
               className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50 overflow-hidden"
-              whileHover={{ y: -8, scale: 1.02, shadow: "0 25px 50px rgba(0,0,0,0.15)" }}
+              whileHover={{ y: -8, scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
               {/* Tab Navigation */}

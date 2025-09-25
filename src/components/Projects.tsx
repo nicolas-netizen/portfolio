@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Github, PlayCircle, Video, Filter, X } from 'lucide-react';
+import { Github, PlayCircle, ExternalLink, Filter, X, Code2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useState, useMemo } from 'react';
 
@@ -12,12 +12,14 @@ interface ProjectType {
   sourceUrl?: string;
   demoUrl?: string;
   videoUrl?: string;
+  category: string;
 }
 
-const Projects = () => {
+const ProjectsNew = () => {
   const { t } = useTranslation();
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
   const [showFilters, setShowFilters] = useState(false);
+  const [iframeErrors, setIframeErrors] = useState<Set<number>>(new Set());
 
   // Available technologies for filtering
   const availableTechnologies = [
@@ -50,6 +52,7 @@ const Projects = () => {
         t('projects.tech.mongodb')
       ],
       demoUrl: 'https://triven.com.ar/',
+      category: 'mobile'
     },
     {
       title: t('projects.chapiri.title'),
@@ -63,56 +66,77 @@ const Projects = () => {
         t('projects.tech.tailwind')
       ],
       sourceUrl: 'https://github.com/nicolas-netizen/psico',
+      category: 'web'
     },
     {
       title: t('projects.goblinAttack.title'),
       description: t('projects.goblinAttack.description'),
-      image: '/images/Screenshot_2.png',
+      videoUrl: '/Copia de SUPER PIXEL.mp4',
       technologies: [
         t('projects.tech.unity'), 
         t('projects.tech.csharp')
       ],
       demoUrl: 'https://nico-pano00.itch.io/el-ataque-de-los-goblins',
       sourceUrl: 'https://github.com/nicolas-netizen/Proyecto-7MO-TowerDefense.git',
-      videoUrl: 'https://www.canva.com/design/DAF-kxKxGzs/watch',
+      category: 'gaming'
+    },
+    {
+      title: 'GG Build',
+      description: 'Plataforma web especializada en venta de PC gaming personalizadas. E-commerce moderno con catálogo de componentes, configurador de PC y sistema de pedidos integrado.',
+      image: '/images/web3.png',
+      websiteUrl: 'https://gg-build.vercel.app/',
+      demoUrl: 'https://gg-build.vercel.app/',
+      technologies: [
+        t('projects.tech.react'), 
+        t('projects.tech.typescript'), 
+        t('projects.tech.tailwind'),
+        t('projects.tech.nodejs'),
+        t('projects.tech.mongodb')
+      ],
+      sourceUrl: 'https://github.com/nicolas-netizen/gg-build',
+      category: 'ecommerce'
     },
     {
       title: t('projects.webPresentation.title'),
       description: t('projects.webPresentation.description'),
-      image: '/images/web3.png',
+      videoUrl: '/Presentacion Página Web.mp4',
       technologies: [
-        t('projects.tech.react'), 
-        t('projects.tech.nodejs')
+        t('projects.tech.html'), 
+        t('projects.tech.css'), 
+        t('projects.tech.javascript')
       ],
-      videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-      sourceUrl: 'https://github.com/nicolas-netizen/TecnicaWeb',
-    },
-    {
-      title: t('projects.portfolio.title'),
-      description: t('projects.portfolio.description'),
-      image: '/images/web2.png',
-      technologies: [
-        t('projects.tech.csharp'), 
-        t('projects.tech.sqlserver')
-      ],
-      sourceUrl: 'https://github.com/nicolas-netizen/NetWinForm_sql',
-      videoUrl: 'https://www.canva.com/design/DAF-kxKxGzs/watch',
+      demoUrl: 'https://nuevomundosolar.com/',
+      category: 'web'
     },
     {
       title: t('projects.nuevoMundo.title'),
       description: t('projects.nuevoMundo.description'),
+      image: '/images/web3.png',
       websiteUrl: 'https://nuevomundosolar.com/',
-      image: '/images/hero.png',
+      demoUrl: 'https://nuevomundosolar.com/',
       technologies: [
         t('projects.tech.react'), 
         t('projects.tech.nodejs'), 
-        t('projects.tech.tailwind'), 
-        t('projects.tech.express'), 
+        t('projects.tech.tailwind'),
+        t('projects.tech.express'),
         t('projects.tech.mongodb')
       ],
       sourceUrl: 'https://github.com/nicolas-netizen/nuevo-mundo-ecommerce',
-      demoUrl: 'https://nuevomundosolar.com/',
+      category: 'ecommerce'
     },
+    {
+      title: t('projects.portfolio.title'),
+      description: t('projects.portfolio.description'),
+      image: '/images.jpeg',
+      technologies: [
+        t('projects.tech.react'), 
+        t('projects.tech.typescript'), 
+        t('projects.tech.tailwind'),
+        t('projects.tech.framer')
+      ],
+      sourceUrl: 'https://github.com/nicolas-netizen/portfolio',
+      category: 'web'
+    }
   ];
 
   // Filter projects based on selected technology
@@ -125,8 +149,13 @@ const Projects = () => {
     );
   }, [projects, selectedFilter]);
 
+  // Handle iframe load error
+  const handleIframeError = (index: number) => {
+    setIframeErrors(prev => new Set(prev).add(index));
+  };
+
   return (
-    <section id="projects" className="py-20 relative bg-gradient-to-br from-gray-50 to-emerald-50 dark:from-gray-900 dark:to-gray-800">
+    <section id="projects" className="py-20 relative theme-bg">
       <div className="max-w-7xl mx-auto px-4">
         <motion.div 
           className="text-center mb-16"
@@ -136,7 +165,7 @@ const Projects = () => {
           viewport={{ once: true }}
         >
           <motion.h2 
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent relative"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 theme-gradient-text relative"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -144,7 +173,7 @@ const Projects = () => {
           >
             {t('projects.title')}
             <motion.div
-              className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 sm:w-20 lg:w-24 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full"
+              className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 theme-gradient rounded-full"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
@@ -152,298 +181,261 @@ const Projects = () => {
             />
           </motion.h2>
           <motion.p 
-            className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4"
+            className="text-lg sm:text-xl theme-text-secondary max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            {t('projects.subtitle') || 'A collection of my recent work and personal projects'}
+            {t('projects.subtitle')}
           </motion.p>
         </motion.div>
 
-        {/* Filter Section */}
-        <motion.div
-          className="mb-12"
+        {/* Filter Controls */}
+        <motion.div 
+          className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+          <div className="flex items-center gap-4">
+            <motion.button
+              onClick={() => setShowFilters(!showFilters)}
+              className="flex items-center gap-2 px-4 py-2 theme-surface border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow-md transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Filter size={16} />
+              <span className="text-sm font-medium">Filter by Tech</span>
+            </motion.button>
+            
+            {selectedFilter !== 'all' && (
               <motion.button
-                onClick={() => setShowFilters(!showFilters)}
-                className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700 w-full sm:w-auto"
+                onClick={() => setSelectedFilter('all')}
+                className="flex items-center gap-2 px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-full text-sm font-medium hover:bg-emerald-200 dark:hover:bg-emerald-900/50 transition-colors"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Filter size={18} className="sm:w-5 sm:h-5" />
-                <span className="font-medium text-sm sm:text-base">Filter by Technology</span>
+                {selectedFilter}
+                <X size={16} />
               </motion.button>
-              
-              {selectedFilter !== 'all' && (
-                <motion.button
-                  onClick={() => setSelectedFilter('all')}
-                  className="flex items-center gap-2 px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-full text-sm font-medium hover:bg-emerald-200 dark:hover:bg-emerald-900/50 transition-colors"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {selectedFilter}
-                  <X size={16} />
-                </motion.button>
-              )}
-            </div>
-            
-            <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 text-center sm:text-right">
-              Showing {filteredProjects.length} of {projects.length} projects
-            </div>
-          </div>
-
-          {/* Filter Options */}
-          <AnimatePresence>
-            {showFilters && (
-              <motion.div
-                className="mt-6 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700"
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="flex flex-wrap gap-2 sm:gap-3">
-                  {availableTechnologies.map((tech) => (
-                    <motion.button
-                      key={tech}
-                      onClick={() => {
-                        setSelectedFilter(tech);
-                        setShowFilters(false);
-                      }}
-                      className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
-                        selectedFilter === tech
-                          ? 'bg-emerald-600 text-white shadow-lg'
-                          : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 hover:text-emerald-700 dark:hover:text-emerald-300'
-                      }`}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      {tech === 'all' ? 'All Projects' : tech}
-                    </motion.button>
-                  ))}
-                </div>
-              </motion.div>
             )}
-          </AnimatePresence>
+          </div>
+          
+          <div className="text-sm theme-text-secondary">
+            {filteredProjects.length} of {projects.length} projects
+          </div>
         </motion.div>
+
+        {/* Filter Options */}
+        <AnimatePresence>
+          {showFilters && (
+            <motion.div
+              className="mb-8 p-6 theme-surface rounded-xl shadow-lg border border-gray-200 dark:border-gray-700"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="flex flex-wrap gap-2">
+                {availableTechnologies.map((tech) => (
+                  <motion.button
+                    key={tech}
+                    onClick={() => {
+                      setSelectedFilter(tech);
+                      setShowFilters(false);
+                    }}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                      selectedFilter === tech
+                        ? 'theme-primary-bg text-white shadow-lg'
+                        : 'theme-surface border border-gray-200 dark:border-gray-700 theme-text hover:border-emerald-300 dark:hover:border-emerald-600'
+                    }`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {tech === 'all' ? 'All Projects' : tech}
+                  </motion.button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
         
+        {/* Projects Grid */}
         <AnimatePresence mode="wait">
           <motion.div 
             key={selectedFilter}
-            className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
           >
             {filteredProjects.map((project, index) => (
-            <motion.div
-              key={index}
-              className="group"
-              initial={{ opacity: 0, y: 60, scale: 0.9 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ 
-                duration: 0.8, 
-                delay: index * 0.15,
-                ease: "easeOut"
-              }}
-              viewport={{ once: true }}
-              whileHover={{ 
-                y: -15,
-                transition: { duration: 0.4, ease: "easeOut" }
-              }}
-            >
-              <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-3xl transition-all duration-500 group-hover:border-emerald-200 dark:group-hover:border-emerald-700">
-                {/* Project Image/Preview */}
-                <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800">
-                  {project.websiteUrl ? (
-                    <div className="relative w-full h-full">
-                      <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-black/40 group-hover:from-black/10 group-hover:to-black/20 transition-all duration-500 z-10"></div>
-                      <iframe
-                        src={project.websiteUrl}
-                        title={project.title}
-                        className="absolute inset-0 w-full h-full border-none transform group-hover:scale-110 transition-transform duration-700 ease-out"
-                        loading="lazy"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-top-navigation"
-                      />
+              <motion.div
+                key={index}
+                className="group"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: index * 0.1,
+                  ease: "easeOut"
+                }}
+                viewport={{ once: true }}
+                whileHover={{ 
+                  y: -8,
+                  transition: { duration: 0.3, ease: "easeOut" }
+                }}
+              >
+                <div className="relative theme-surface rounded-xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 group-hover:border-emerald-200 dark:group-hover:border-emerald-700 h-full flex flex-col">
+                  {/* Project Image/Preview */}
+                  <div className="relative h-64 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800">
+                    {project.videoUrl && project.videoUrl.endsWith('.mp4') ? (
+                      <div className="relative w-full h-full">
+                        <video
+                          src={project.videoUrl}
+                          className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500 ease-out"
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          onError={() => handleIframeError(index)}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-br from-black/10 to-black/30 group-hover:from-black/5 group-hover:to-black/15 transition-all duration-500"></div>
+                      </div>
+                    ) : project.websiteUrl && !iframeErrors.has(index) ? (
+                      <div className="relative w-full h-full">
+                        <div className="absolute inset-0 bg-gradient-to-br from-black/10 to-black/30 group-hover:from-black/5 group-hover:to-black/15 transition-all duration-500 z-10"></div>
+                        <iframe
+                          src={project.websiteUrl}
+                          title={project.title}
+                          className="absolute inset-0 w-full h-full border-none transform group-hover:scale-105 transition-transform duration-500 ease-out"
+                          loading="lazy"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                          allowFullScreen
+                          onError={() => handleIframeError(index)}
+                        />
+                      </div>
+                    ) : project.image ? (
+                      <div className="relative w-full h-full">
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-out"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-br from-black/10 to-black/30 group-hover:from-black/5 group-hover:to-black/15 transition-all duration-500"></div>
+                      </div>
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center">
+                          <Code2 className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
+                        </div>
+                      </div>
+                    )}
+                    
+                    {/* Overlay with action buttons */}
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center z-20">
+                      <div className="flex space-x-3">
+                        {project.sourceUrl && (
+                          <motion.a
+                            href={project.sourceUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-emerald-500/80 transition-all duration-300"
+                            aria-label="View Source Code"
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.95 }}
+                          >
+                            <Github className="w-5 h-5" />
+                          </motion.a>
+                        )}
+                        {project.demoUrl && (
+                          <motion.a
+                            href={project.demoUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-emerald-500/80 transition-all duration-300"
+                            aria-label="View Demo"
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.95 }}
+                          >
+                            <PlayCircle className="w-5 h-5" />
+                          </motion.a>
+                        )}
+                      </div>
                     </div>
-                  ) : (
-                    <div className="relative w-full h-full">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-black/40 group-hover:from-black/10 group-hover:to-black/20 transition-all duration-500"></div>
+                    
+                    {/* Project status badge */}
+                    <div className="absolute top-3 right-3 z-30">
+                      <span className="px-2 py-1 bg-emerald-500/90 backdrop-blur-sm text-white text-xs font-semibold rounded-full">
+                        {project.websiteUrl ? 'Live' : 'Project'}
+                      </span>
                     </div>
-                  )}
-                  
-                  {/* Overlay with action buttons */}
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center z-20">
-                    <div className="flex space-x-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                      {project.sourceUrl && (
-                        <motion.a
-                          href={project.sourceUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-4 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-emerald-500/80 transition-all duration-300 hover:scale-110"
-                          aria-label={t('projects.viewSourceCode')}
-                          whileHover={{ scale: 1.1, rotate: 5 }}
-                          whileTap={{ scale: 0.95 }}
+                  </div>
+
+                  {/* Project Content */}
+                  <div className="p-6 flex-1 flex flex-col">
+                    <h3 className="text-xl font-bold theme-text mb-3 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    <p className="theme-text-secondary mb-4 text-sm leading-relaxed flex-1">
+                      {project.description}
+                    </p>
+                    
+                    {/* Technologies */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.technologies.slice(0, 3).map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-xs font-medium rounded-full"
                         >
-                          <Github className="w-6 h-6" />
-                        </motion.a>
+                          {tech}
+                        </span>
+                      ))}
+                      {project.technologies.length > 3 && (
+                        <span className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 text-xs font-medium rounded-full">
+                          +{project.technologies.length - 3} more
+                        </span>
                       )}
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="flex gap-2 mt-auto">
                       {project.demoUrl && (
                         <motion.a
                           href={project.demoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-4 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-emerald-500/80 transition-all duration-300 hover:scale-110"
-                          aria-label={t('projects.playDemo')}
-                          whileHover={{ scale: 1.1, rotate: -5 }}
-                          whileTap={{ scale: 0.95 }}
+                          className="flex-1 flex items-center justify-center gap-2 px-4 py-2 theme-primary-bg text-white rounded-lg hover:bg-emerald-600 transition-colors duration-300 text-sm font-medium"
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
                         >
-                          <PlayCircle className="w-6 h-6" />
+                          <ExternalLink size={16} />
+                          View Demo
                         </motion.a>
                       )}
-                      {project.videoUrl && (
+                      {project.sourceUrl && (
                         <motion.a
-                          href={project.videoUrl}
+                          href={project.sourceUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-4 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-emerald-500/80 transition-all duration-300 hover:scale-110"
-                          aria-label={t('projects.watchVideo')}
-                          whileHover={{ scale: 1.1, rotate: 5 }}
-                          whileTap={{ scale: 0.95 }}
+                          className="flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 theme-text rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300 text-sm font-medium"
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
                         >
-                          <Video className="w-6 h-6" />
+                          <Github size={16} />
+                          Code
                         </motion.a>
                       )}
                     </div>
                   </div>
-                  
-                  {/* Project status badge */}
-                  <div className="absolute top-4 right-4 z-30">
-                    <span className="px-3 py-1 bg-emerald-500/90 backdrop-blur-sm text-white text-xs font-semibold rounded-full">
-                      {project.websiteUrl ? 'Live' : 'Project'}
-                    </span>
-                  </div>
                 </div>
-                {/* Project Content */}
-                <div className="p-8">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-300">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                      {project.description}
-                    </p>
-                  </motion.div>
-
-                  {/* Technologies */}
-                  <motion.div 
-                    className="mb-6"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    viewport={{ once: true }}
-                  >
-                    <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3 uppercase tracking-wide">
-                      Technologies
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, techIndex) => (
-                        <motion.span
-                          key={techIndex}
-                          className="px-4 py-2 bg-gradient-to-r from-emerald-100 to-emerald-200 dark:from-emerald-900/30 dark:to-emerald-800/30 text-emerald-800 dark:text-emerald-200 rounded-full text-sm font-medium border border-emerald-200 dark:border-emerald-700"
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          transition={{ 
-                            duration: 0.4, 
-                            delay: 0.3 + techIndex * 0.1 
-                          }}
-                          viewport={{ once: true }}
-                          whileHover={{ 
-                            scale: 1.05, 
-                            backgroundColor: "rgba(16, 185, 129, 0.1)",
-                            borderColor: "rgba(16, 185, 129, 0.3)"
-                          }}
-                        >
-                          {tech}
-                        </motion.span>
-                      ))}
-                    </div>
-                  </motion.div>
-
-                  {/* Action Buttons */}
-                  <motion.div 
-                    className="flex flex-wrap gap-3"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                    viewport={{ once: true }}
-                  >
-                    {project.demoUrl && (
-                      <motion.a
-                        href={project.demoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-lg font-medium hover:from-emerald-700 hover:to-emerald-800 transition-all duration-300 shadow-lg hover:shadow-emerald-500/25"
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <PlayCircle className="w-4 h-4" />
-                        {t('projects.playDemo')}
-                      </motion.a>
-                    )}
-                    {project.sourceUrl && (
-                      <motion.a
-                        href={project.sourceUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300 border border-gray-200 dark:border-gray-600"
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <Github className="w-4 h-4" />
-                        {t('projects.viewSourceCode')}
-                      </motion.a>
-                    )}
-                    {project.videoUrl && (
-                      <motion.a
-                        href={project.videoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-6 py-3 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-lg font-medium hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-all duration-300 border border-blue-200 dark:border-blue-700"
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <Video className="w-4 h-4" />
-                        {t('projects.watchVideo')}
-                      </motion.a>
-                    )}
-                  </motion.div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
           </motion.div>
         </AnimatePresence>
       </div>
@@ -451,4 +443,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default ProjectsNew;

@@ -41,7 +41,7 @@ const GitHubActivity = () => {
   }, []);
 
   return (
-    <section className="py-20 bg-white dark:bg-gray-800">
+    <section className="py-20 theme-surface">
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -49,7 +49,7 @@ const GitHubActivity = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-3xl font-bold theme-text mb-4">
             {t('github.title')}
           </h2>
           <p className="text-gray-600 dark:text-gray-400">

@@ -16,7 +16,7 @@ const Stats = () => {
   // Datos reales calculados
   const calculateRealStats = () => {
     // Proyectos completados (basado en tu portafolio actual)
-    const completedProjects = 5; // Juntea, Chapiri, Goblin Attack, Web Presentation, Portfolio
+    const completedProjects = 7; // Juntea, Chapiri, Goblin Attack, GG Build, Web Presentation, Mundo Nuevo, Portfolio
     
     // Tecnologías que dominas (basado en tu sección de skills)
     const technologies = [
@@ -95,7 +95,7 @@ const Stats = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-emerald-50 dark:from-gray-900 dark:to-gray-800">
+    <section className="py-20 theme-bg">
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -104,7 +104,7 @@ const Stats = () => {
           className="text-center mb-12"
         >
           <motion.h2 
-            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4 relative"
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold theme-text mb-4 relative"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}

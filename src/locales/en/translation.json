@@ -8,7 +8,8 @@
   },
   "common": {
     "close": "Close",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "scrollDown": "Scroll Down"
   },
   "language": {
     "notification": "We detected your language. Would you like to switch to your preferred language?",
@@ -51,34 +52,57 @@
       "sqlserver": "SQL Server",
       "flutter": "Flutter",
       "dart": "Dart",
-    },
-    "goblinAttack": {
-      "title": "Goblin Attack",
-      "description": "A tower defense game where you must protect your castle from waves of goblins. Built with Unity and C#."
-    },
-    "webPresentation": {
-      "title": "Chapiri Academy",
-      "description": "Modern educational platform for Chapiri Academy. Designed with a focus on student experience, offering course management, interactive educational resources, and progress tracking. Features an admin panel for teachers, class scheduling, and downloadable materials."
-    },
-    "portfolio": {
-      "title": "Windows Forms App",
-      "description": "Creating a Windows Forms application in C# like a pro: following best practices and generating the database from Visual Studio."
-    },
-    "solarEnergy": {
-      "title": "New World",
-      "description": "New World is a full-stack e-commerce platform developed with cutting-edge technologies. The project offers a modern and intuitive shopping experience, allowing users to explore a dynamic product catalog, perform advanced searches, manage their shopping cart, and complete transactions securely."
+      "html": "HTML5",
+      "css": "CSS3",
+      "javascript": "JavaScript",
+      "framer": "Framer Motion"
     },
     "juntea": {
       "title": "Juntea - Events App",
-      "description": "Mobile application for event management developed with Flutter and Dart. Allows users to create, manage, and participate in events intuitively. Features registration, event calendar, push notifications, and attendee management with a native mobile experience.",
-      "demoUrl": "https://triven.com.ar/"
+      "description": "Mobile application for event management developed with Flutter and Dart. Allows users to create, manage, and participate in events intuitively. Features registration, event calendar, push notifications, and attendee management with a native mobile experience."
+    },
+    "chapiri": {
+      "title": "Chapiri Academy",
+      "description": "Modern educational platform for Chapiri Academy. Designed with a focus on student experience, offering course management, interactive educational resources, and progress tracking. Features an admin panel for teachers, class scheduling, and downloadable materials."
+    },
+    "goblinAttack": {
+      "title": "Goblin Attack",
+      "description": "An exciting Tower Defense game developed with Unity 3D and C#. Players must defend their castle from waves of goblins by strategically building towers. Includes multiple levels, different enemy types, and towers with unique abilities."
+    },
+    "webPresentation": {
+      "title": "School Website",
+      "description": "A modern website for Technical School No. 1 of Merlo, with an interactive presentation of the institution. Includes information about technical careers, image gallery, contact forms, and responsive design optimized for all devices."
+    },
+    "portfolio": {
+      "title": "Personal Portfolio",
+      "description": "My personal portfolio developed with React, TypeScript, and Tailwind CSS. Features Framer Motion animations, interactive AI terminal, dynamic theme system, and fully responsive design. A showcase of my modern frontend development skills."
     },
     "nuevoMundo": {
-      "title": "New World E-Commerce Platform",
-      "description": "A comprehensive full-stack e-commerce platform developed with cutting-edge technologies. The project offers a modern and intuitive shopping experience, allowing users to explore a dynamic product catalog, perform advanced searches, manage their shopping cart, and complete transactions securely.",
-      "sourceUrl": "https://github.com/nicolas-netizen/nuevo-mundo-ecommerce",
-      "demoUrl": "https://solarr-production-fa18.up.railway.app/"
+      "title": "New World E-commerce",
+      "description": "Full-stack e-commerce platform developed with React, Node.js, and MongoDB. Includes product catalog, shopping cart, payment system, admin panel, and responsive design. A complete solution for online sales with optimized user experience."
     }
+  },
+  "skills": {
+    "title": "Technical Skills",
+    "softSkills": "Soft Skills",
+    "react": "React",
+    "typescript": "TypeScript",
+    "javascript": "JavaScript",
+    "htmlcss": "HTML5 & CSS3",
+    "nodejs": "Node.js",
+    "python": "Python",
+    "csharp": "C#",
+    "tailwind": "Tailwind CSS",
+    "git": "Git",
+    "postman": "Postman",
+    "jest": "Jest",
+    "unity": "Unity",
+    "communication": "Communication",
+    "teamwork": "Teamwork",
+    "problemSolving": "Problem Solving",
+    "adaptability": "Adaptability",
+    "creativity": "Creativity",
+    "timeManagement": "Time Management"
   },
   "contact": {
     "title": "Get in Touch",

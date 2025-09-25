@@ -8,7 +8,8 @@
   },
   "common": {
     "close": "Cerrar",
-    "loading": "Cargando..."
+    "loading": "Cargando...",
+    "scrollDown": "Desplazarse hacia abajo"
   },
   "language": {
     "notification": "Detectamos tu idioma. ¿Te gustaría cambiar al español?",
@@ -48,34 +49,60 @@
       "mongodb": "MongoDB",
       "unity": "Unity",
       "csharp": "C#",
-      "sqlserver": "SQL Server"
+      "sqlserver": "SQL Server",
+      "flutter": "Flutter",
+      "dart": "Dart",
+      "html": "HTML5",
+      "css": "CSS3",
+      "javascript": "JavaScript",
+      "framer": "Framer Motion"
     },
-    "goblinAttack": {
-      "title": "El Ataque de los Goblins",
-      "description": "Un juego de defensa de torres donde debes proteger tu castillo de oleadas de goblins. Construido con Unity y C#."
+    "juntea": {
+      "title": "Juntea - App de Eventos",
+      "description": "Aplicación móvil para gestión de eventos desarrollada con Flutter y Dart. Permite a los usuarios crear, gestionar y participar en eventos de manera intuitiva. Incluye funcionalidades de registro, calendario de eventos, notificaciones push y gestión de asistentes con una experiencia móvil nativa."
     },
-    "webPresentation": {
-      "title": "Sitio Web Escolar",
-      "description": "Un sitio web moderno para la Escuela Técnica N°1 de Merlo, con una presentación interactiva de la institución."
-    },
-    "portfolio": {
-      "title": "Aplicación Windows Forms",
-      "description": "Creando una aplicación Windows Forms en C# como un profesional: siguiendo las mejores prácticas y generando la base de datos desde Visual Studio."
-    },
-    "psico": {
+    "chapiri": {
       "title": "Academia Chapiri",
       "description": "Plataforma educativa moderna para la Academia Chapiri. Diseñada con un enfoque en la experiencia del estudiante, ofrece un sistema de gestión de cursos, recursos educativos interactivos y seguimiento del progreso. Incluye un panel de administración para profesores, calendario de clases y materiales descargables."
     },
-    "solarEnergy": {
-      "title": "Mundo Nuevo",
-      "description": "Mundo Nuevo es una plataforma de comercio electrónico full-stack desarrollada con tecnologías de vanguardia. El proyecto ofrece una experiencia de compra moderna e intuitiva, permitiendo a los usuarios explorar un catálogo de productos dinámico, realizar búsquedas avanzadas, gestionar su carrito de compras y completar transacciones de manera segura."
+    "goblinAttack": {
+      "title": "El Ataque de los Goblins",
+      "description": "Un emocionante juego Tower Defense desarrollado con Unity 3D y C#. Los jugadores deben defender su castillo de oleadas de goblins construyendo torres estratégicamente. Incluye múltiples niveles, diferentes tipos de enemigos y torres con habilidades únicas."
+    },
+    "webPresentation": {
+      "title": "Sitio Web Escolar",
+      "description": "Un sitio web moderno para la Escuela Técnica N°1 de Merlo, con una presentación interactiva de la institución. Incluye información sobre carreras técnicas, galería de imágenes, formularios de contacto y diseño responsive optimizado para todos los dispositivos."
+    },
+    "portfolio": {
+      "title": "Portfolio Personal",
+      "description": "Mi portfolio personal desarrollado con React, TypeScript y Tailwind CSS. Incluye animaciones con Framer Motion, terminal interactiva con IA, sistema de temas dinámicos, y diseño completamente responsive. Una muestra de mis habilidades en desarrollo frontend moderno."
     },
     "nuevoMundo": {
-      "title": "Plataforma E-Commerce Mundo Nuevo",
-      "description": "Una plataforma de comercio electrónico full-stack desarrollada con tecnologías de vanguardia. El proyecto ofrece una experiencia de compra moderna e intuitiva, permitiendo a los usuarios explorar un catálogo de productos dinámico, realizar búsquedas avanzadas, gestionar su carrito de compras y completar transacciones de manera segura.",
-      "sourceUrl": "https://github.com/nicolas-netizen/nuevo-mundo-ecommerce",
-      "demoUrl": "https://solarr-production-fa18.up.railway.app/"
+      "title": "Mundo Nuevo E-commerce",
+      "description": "Plataforma de comercio electrónico full-stack desarrollada con React, Node.js y MongoDB. Incluye catálogo de productos, carrito de compras, sistema de pagos, panel de administración y diseño responsive. Una solución completa para ventas online con experiencia de usuario optimizada."
     }
+  },
+  "skills": {
+    "title": "Habilidades Técnicas",
+    "softSkills": "Habilidades Blandas",
+    "react": "React",
+    "typescript": "TypeScript",
+    "javascript": "JavaScript",
+    "htmlcss": "HTML5 & CSS3",
+    "nodejs": "Node.js",
+    "python": "Python",
+    "csharp": "C#",
+    "tailwind": "Tailwind CSS",
+    "git": "Git",
+    "postman": "Postman",
+    "jest": "Jest",
+    "unity": "Unity",
+    "communication": "Comunicación",
+    "teamwork": "Trabajo en Equipo",
+    "problemSolving": "Resolución de Problemas",
+    "adaptability": "Adaptabilidad",
+    "creativity": "Creatividad",
+    "timeManagement": "Gestión del Tiempo"
   },
   "contact": {
     "title": "Contactame",

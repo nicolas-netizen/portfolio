@@ -12,7 +12,7 @@ const Hero = () => {
   const opacity = useTransform(scrollY, [0, 300], [1, 0.8]);
 
   return (
-    <section id="home" className="pt-32 pb-20 px-4 relative overflow-hidden bg-gradient-to-br from-gray-50 to-emerald-50 dark:from-gray-900 dark:to-gray-800">
+    <section id="home" className="pt-16 sm:pt-20 md:pt-32 pb-12 sm:pb-16 md:pb-24 px-4 sm:px-6 relative overflow-hidden theme-bg min-h-screen flex flex-col">
       {/* Advanced Particle Background */}
       <ParticleBackground />
       
@@ -21,7 +21,7 @@ const Hero = () => {
         {[...Array(window.innerWidth < 768 ? 0 : 8)].map((_, i) => (
           <motion.div
             key={`code-${i}`}
-            className="absolute text-emerald-400/20 text-2xl md:text-4xl hidden md:block"
+            className="absolute theme-accent/20 text-2xl md:text-4xl hidden md:block"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -41,29 +41,29 @@ const Hero = () => {
         ))}
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between">
+      <div className="max-w-7xl mx-auto relative z-10 flex-1 flex flex-col justify-center">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
           <motion.div 
-            className="md:w-1/2 space-y-6"
+            className="md:w-1/2 space-y-3 sm:space-y-4 md:space-y-6 text-center md:text-left order-2 md:order-1"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <motion.h1 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold theme-text leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               {t('hero.greeting')} <motion.span 
-                className="text-emerald-600 relative"
+                className="theme-primary relative"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
                 Nicolas
                 <motion.span
-                  className="absolute -bottom-1 left-0 w-full h-1 bg-emerald-500"
+                  className="absolute -bottom-1 left-0 w-full h-1 theme-primary-bg"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ duration: 0.8, delay: 1.2 }}
@@ -71,7 +71,7 @@ const Hero = () => {
               </motion.span>
             </motion.h1>
             <motion.p 
-              className="text-lg sm:text-xl text-gray-600 dark:text-gray-300"
+              className="text-base sm:text-lg md:text-xl theme-text-secondary"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -79,7 +79,7 @@ const Hero = () => {
               {t('hero.role')}
             </motion.p>
             <motion.p 
-              className="text-base sm:text-lg text-gray-600 dark:text-gray-300"
+              className="text-sm sm:text-base md:text-lg theme-text-secondary"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -87,7 +87,7 @@ const Hero = () => {
               {t('hero.description')}
             </motion.p>
             <motion.div 
-              className="flex space-x-4"
+              className="flex space-x-3 sm:space-x-4 justify-center md:justify-start"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
@@ -96,7 +96,7 @@ const Hero = () => {
                 href="https://github.com/nicolas-netizen" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="group relative p-3 text-gray-600 hover:text-emerald-600 transition-all duration-300 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm hover:bg-emerald-50 dark:hover:bg-emerald-900/20"
+                className="group relative p-2 sm:p-3 text-gray-600 hover:text-emerald-600 transition-all duration-300 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm hover:bg-emerald-50 dark:hover:bg-emerald-900/20"
                 whileHover={{ 
                   scale: 1.1, 
                   rotate: 5,
@@ -119,7 +119,7 @@ const Hero = () => {
                 href="https://www.linkedin.com/in/nicolas-paniagua-80150a256" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="group relative p-3 text-gray-600 hover:text-emerald-600 transition-all duration-300 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm hover:bg-emerald-50 dark:hover:bg-emerald-900/20"
+                className="group relative p-2 sm:p-3 text-gray-600 hover:text-emerald-600 transition-all duration-300 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm hover:bg-emerald-50 dark:hover:bg-emerald-900/20"
                 whileHover={{ 
                   scale: 1.1, 
                   rotate: -5,
@@ -140,7 +140,7 @@ const Hero = () => {
               </motion.a>
               <motion.a 
                 href="mailto:nicolas.paniagua05f@gmail.com" 
-                className="group relative p-3 text-gray-600 hover:text-emerald-600 transition-all duration-300 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm hover:bg-emerald-50 dark:hover:bg-emerald-900/20"
+                className="group relative p-2 sm:p-3 text-gray-600 hover:text-emerald-600 transition-all duration-300 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm hover:bg-emerald-50 dark:hover:bg-emerald-900/20"
                 whileHover={{ 
                   scale: 1.1, 
                   rotate: 5,
@@ -162,7 +162,7 @@ const Hero = () => {
             </motion.div>
           </motion.div>
           <motion.div 
-            className="md:w-1/2 mt-8 md:mt-0"
+            className="md:w-1/2 mt-4 md:mt-0 flex justify-center order-1 md:order-2"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -172,7 +172,7 @@ const Hero = () => {
               src="/Fotonico.jpg"
               alt="Nicolas Paniagua"
               loading="eager"
-              className="rounded-full w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-cover mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="rounded-full w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 object-cover mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300"
               whileHover={{ scale: 1.05, rotate: 2 }}
               whileTap={{ scale: 0.95 }}
               initial={{ scale: 0.8, opacity: 0 }}
@@ -183,9 +183,9 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - Hidden on mobile */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="hidden sm:block absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.5 }}
@@ -195,7 +195,7 @@ const Hero = () => {
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <span className="text-sm font-medium mb-2">Scroll Down</span>
+          <span className="text-sm font-medium mb-2">{t('common.scrollDown')}</span>
           <ChevronDown size={24} />
         </motion.div>
       </motion.div>

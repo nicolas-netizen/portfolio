@@ -212,19 +212,24 @@ const GlobalSearch = () => {
 
   if (!isOpen) {
     return (
-      <motion.button
+      <button
         onClick={() => setIsOpen(true)}
-        className="fixed top-20 right-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors z-40 flex items-center gap-2"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1 }}
+        className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-2"
+        style={{
+          position: 'fixed',
+          top: '80px',
+          right: '8px',
+          zIndex: 9999,
+          maxWidth: 'calc(100vw - 16px)',
+          display: 'block',
+          visibility: 'visible',
+          opacity: 1,
+        }}
       >
         <Search size={16} />
         <span className="hidden sm:inline">Search</span>
         <kbd className="hidden sm:inline text-xs bg-gray-100 dark:bg-gray-700 px-1 rounded">Ctrl+K</kbd>
-      </motion.button>
+      </button>
     );
   }
 

@@ -7,6 +7,19 @@ const ThemeSelector = () => {
   const { currentTheme, isDark, changeTheme, toggleDarkMode, themes, themeConfig } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
 
+  // Cerrar el dropdown cuando se selecciona un tema
+  const handleThemeChange = (theme: Theme) => {
+    console.log('Theme button clicked:', theme, 'current theme:', currentTheme);
+    changeTheme(theme);
+    setIsOpen(false);
+  };
+
+  const handleDarkModeToggle = () => {
+    console.log('Dark mode toggle clicked, current isDark:', isDark);
+    toggleDarkMode();
+    setIsOpen(false);
+  };
+
   const themeColors = {
     light: 'bg-white border-gray-200',
     dark: 'bg-gray-800 border-gray-700',
@@ -32,13 +45,16 @@ const ThemeSelector = () => {
   return (
     <div className="relative">
       <motion.button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+        onClick={() => {
+          console.log('ThemeSelector clicked, current theme:', currentTheme);
+          setIsOpen(!isOpen);
+        }}
+        className="flex items-center gap-2 px-3 py-2 theme-surface border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
         <Palette size={16} />
-        <span className="text-sm font-medium">{themeConfig.name}</span>
+        <span className="text-sm font-medium theme-text">{themeConfig.name}</span>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.2 }}
@@ -52,14 +68,14 @@ const ThemeSelector = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="absolute top-full right-0 mt-2 w-64 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-xl z-50"
+            className="absolute top-full right-0 mt-2 w-64 theme-surface border border-gray-200 dark:border-gray-700 rounded-lg shadow-xl z-50"
             initial={{ opacity: 0, y: -10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2 }}
           >
             <div className="p-4">
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-3">
+              <h3 className="font-semibold theme-text mb-3">
                 Choose Theme
               </h3>
               
@@ -67,12 +83,12 @@ const ThemeSelector = () => {
               <div className="flex items-center justify-between mb-4 p-2 rounded-lg bg-gray-50 dark:bg-gray-700">
                 <div className="flex items-center gap-2">
                   {isDark ? <Moon size={16} /> : <Sun size={16} />}
-                  <span className="text-sm font-medium text-gray-900 dark:text-white">
+                  <span className="text-sm font-medium theme-text">
                     Dark Mode
                   </span>
                 </div>
                 <button
-                  onClick={toggleDarkMode}
+                  onClick={handleDarkModeToggle}
                   className={`relative w-10 h-6 rounded-full transition-colors ${
                     isDark ? 'bg-emerald-500' : 'bg-gray-300'
                   }`}
@@ -102,7 +118,7 @@ const ThemeSelector = () => {
                   return (
                     <motion.button
                       key={theme}
-                      onClick={() => changeTheme(theme)}
+                      onClick={() => handleThemeChange(theme)}
                       className={`relative p-3 rounded-lg border-2 transition-all ${
                         isSelected
                           ? 'border-emerald-500 shadow-md'

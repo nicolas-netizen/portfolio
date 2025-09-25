@@ -13,6 +13,11 @@ const Timeline = () => {
       type: 'education'
     },
     {
+      id: 'university',
+      icon: GraduationCap,
+      type: 'education'
+    },
+    {
       id: 'gamedev',
       icon: Gamepad2,
       type: 'experience'
@@ -46,9 +51,16 @@ const Timeline = () => {
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white"
+          className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white relative"
         >
           {t('timeline.title')}
+          <motion.div
+            className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            viewport={{ once: true }}
+          />
         </motion.h2>
 
         <motion.div

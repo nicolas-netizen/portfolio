@@ -2,6 +2,7 @@ import React, { useState, FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import emailjs from '@emailjs/browser';
 import { Mail, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { motion } from 'motion/react';
 
 const Contact = () => {
   const { t } = useTranslation();
@@ -49,22 +50,58 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 bg-white dark:bg-gray-800">
       <div className="max-w-4xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <motion.h2 
+            className="text-3xl font-bold text-gray-900 dark:text-white mb-4 relative"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
             {t('contact.title')}
-          </h2>
-          <p className="text-gray-600 dark:text-gray-300">
+            <motion.div
+              className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              viewport={{ once: true }}
+            />
+          </motion.h2>
+          <motion.p 
+            className="text-gray-600 dark:text-gray-300"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
             {t('contact.description')}
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-8 shadow-lg">
+        <motion.div 
+          className="bg-gray-50 dark:bg-gray-700 rounded-lg p-8 shadow-lg"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 0.5 }}
+              viewport={{ once: true }}
+            >
               <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 {t('contact.name')}
               </label>
-              <input
+              <motion.input
                 type="text"
                 id="name"
                 name="name"
@@ -73,14 +110,20 @@ const Contact = () => {
                 required
                 className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-colors"
                 placeholder={t('Your name')}
+                whileFocus={{ scale: 1.02 }}
               />
-            </div>
+            </motion.div>
 
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 0.6 }}
+              viewport={{ once: true }}
+            >
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 {t('contact.email')}
               </label>
-              <input
+              <motion.input
                 type="email"
                 id="email"
                 name="email"
@@ -89,14 +132,20 @@ const Contact = () => {
                 required
                 className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-colors"
                 placeholder={t('Your email')}
+                whileFocus={{ scale: 1.02 }}
               />
-            </div>
+            </motion.div>
 
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 0.7 }}
+              viewport={{ once: true }}
+            >
               <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 {t('contact.message')}
               </label>
-              <textarea
+              <motion.textarea
                 id="message"
                 name="message"
                 value={formData.message}
@@ -105,31 +154,50 @@ const Contact = () => {
                 rows={5}
                 className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-colors resize-none"
                 placeholder={t('Your message')}
+                whileFocus={{ scale: 1.02 }}
               />
-            </div>
+            </motion.div>
 
-            <div className="flex items-center justify-between">
+            <motion.div 
+              className="flex items-center justify-between"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.8 }}
+              viewport={{ once: true }}
+            >
               <div className="flex items-center space-x-2">
                 {status === 'success' && (
-                  <div className="flex items-center text-green-600 dark:text-green-400">
+                  <motion.div 
+                    className="flex items-center text-green-600 dark:text-green-400"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
                     <CheckCircle size={20} className="mr-2" />
                     <span>{t('contact.success')}</span>
-                  </div>
+                  </motion.div>
                 )}
                 {status === 'error' && (
-                  <div className="flex items-center text-red-600 dark:text-red-400">
+                  <motion.div 
+                    className="flex items-center text-red-600 dark:text-red-400"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
                     <AlertCircle size={20} className="mr-2" />
                     <span>{t('contact.error')}</span>
-                  </div>
+                  </motion.div>
                 )}
               </div>
 
-              <button
+              <motion.button
                 type="submit"
                 disabled={sending}
                 className={`flex items-center space-x-2 px-6 py-3 bg-emerald-600 text-white rounded-lg transition-colors ${
                   sending ? 'opacity-75 cursor-not-allowed' : 'hover:bg-emerald-700'
                 }`}
+                whileHover={!sending ? { scale: 1.05, boxShadow: "0 10px 25px rgba(16, 185, 129, 0.3)" } : {}}
+                whileTap={!sending ? { scale: 0.95 } : {}}
               >
                 {sending ? (
                   <>
@@ -142,10 +210,10 @@ const Contact = () => {
                     <span>{t('contact.send')}</span>
                   </>
                 )}
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
           </form>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -16,7 +16,7 @@
   },
   "about": {
     "title": "About Me",
-    "description": "I'm a passionate software developer with a strong focus on creating engaging and user-friendly applications. I love learning new technologies and solving complex problems.",
+    "description": "I'm a passionate full stack software developer focused on creating efficient and innovative digital solutions. I have experience working with modern web technologies in both frontend and backend, plus knowledge in infrastructure, databases, and cloud deployment. I stand out for my ability to solve problems practically, learn quickly, and adapt to different technological environments, always with a focus on delivering quality and scalable products.",
     "downloadCv": "Download CV",
     "personalDetails": "Personal Details",
     "funFact": "Fun Facts",
@@ -48,7 +48,10 @@
       "mongodb": "MongoDB",
       "unity": "Unity",
       "csharp": "C#",
-      "sqlserver": "SQL Server"
+      "sqlserver": "SQL Server",
+      "flutter": "Flutter",
+      "dart": "Dart",
+      "firebase": "Firebase"
     },
     "goblinAttack": {
       "title": "Goblin Attack",
@@ -65,6 +68,11 @@
     "solarEnergy": {
       "title": "New World",
       "description": "New World is a full-stack e-commerce platform developed with cutting-edge technologies. The project offers a modern and intuitive shopping experience, allowing users to explore a dynamic product catalog, perform advanced searches, manage their shopping cart, and complete transactions securely."
+    },
+    "juntea": {
+      "title": "Juntea - Events App",
+      "description": "Mobile application for event management developed with Flutter and Dart. Allows users to create, manage, and participate in events intuitively. Features registration, event calendar, push notifications, and attendee management with a native mobile experience.",
+      "demoUrl": "https://triven.com.ar/"
     },
     "nuevoMundo": {
       "title": "New World E-Commerce Platform",

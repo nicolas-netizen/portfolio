@@ -1,7 +1,6 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
-import Card3D from './Card3D';
 import { Github, PlayCircle, Video } from 'lucide-react';
+import { motion } from 'motion/react';
 
 interface ProjectType {
   title: string;
@@ -18,6 +17,19 @@ const Projects = () => {
   const { t } = useTranslation();
 
   const projects: ProjectType[] = [
+    {
+      title: t('projects.juntea.title'),
+      description: t('projects.juntea.description'),
+      websiteUrl: 'https://triven.com.ar/',
+      image: '/images/hero.png',
+      technologies: [
+        t('projects.tech.flutter'), 
+        t('projects.tech.dart'), 
+        t('projects.tech.express'),
+        t('projects.tech.mongodb')
+      ],
+      demoUrl: 'https://triven.com.ar/',
+    },
     {
       title: t('projects.chapiri.title'),
       description: t('projects.chapiri.description'),
@@ -83,117 +95,240 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 relative">
-      <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12 gradient-text">
-          {t('projects.title')}
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <section id="projects" className="py-20 relative bg-gradient-to-br from-gray-50 to-emerald-50 dark:from-gray-900 dark:to-gray-800">
+      <div className="max-w-7xl mx-auto px-4">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <motion.h2 
+            className="text-5xl font-bold mb-4 bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent relative"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            {t('projects.title')}
+            <motion.div
+              className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              viewport={{ once: true }}
+            />
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            {t('projects.subtitle') || 'A collection of my recent work and personal projects'}
+          </motion.p>
+        </motion.div>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <Card3D
+            <motion.div
               key={index}
-              className="group bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+              className="group"
+              initial={{ opacity: 0, y: 60, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ 
+                duration: 0.8, 
+                delay: index * 0.15,
+                ease: "easeOut"
+              }}
+              viewport={{ once: true }}
+              whileHover={{ 
+                y: -15,
+                transition: { duration: 0.4, ease: "easeOut" }
+              }}
             >
-              <div className="relative aspect-video overflow-hidden">
-                {project.websiteUrl ? (
-                  <div className="relative w-full h-full transform group-hover:scale-105 transition-all duration-500 ease-in-out cursor-pointer">
-                    <div className="absolute inset-0 bg-black/50 group-hover:bg-transparent transition-colors duration-300 z-10"></div>
-                    <iframe
-                      src={project.websiteUrl}
-                      title={project.title}
-                      className="absolute inset-0 w-full h-full border-none pointer-events-auto"
-                      loading="lazy"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-top-navigation"
-                    />
-
+              <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-3xl transition-all duration-500 group-hover:border-emerald-200 dark:group-hover:border-emerald-700">
+                {/* Project Image/Preview */}
+                <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800">
+                  {project.websiteUrl ? (
+                    <div className="relative w-full h-full">
+                      <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-black/40 group-hover:from-black/10 group-hover:to-black/20 transition-all duration-500 z-10"></div>
+                      <iframe
+                        src={project.websiteUrl}
+                        title={project.title}
+                        className="absolute inset-0 w-full h-full border-none transform group-hover:scale-110 transition-transform duration-700 ease-out"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-top-navigation"
+                      />
+                    </div>
+                  ) : (
+                    <div className="relative w-full h-full">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-black/40 group-hover:from-black/10 group-hover:to-black/20 transition-all duration-500"></div>
+                    </div>
+                  )}
+                  
+                  {/* Overlay with action buttons */}
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center z-20">
+                    <div className="flex space-x-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                      {project.sourceUrl && (
+                        <motion.a
+                          href={project.sourceUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-4 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-emerald-500/80 transition-all duration-300 hover:scale-110"
+                          aria-label={t('projects.viewSourceCode')}
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <Github className="w-6 h-6" />
+                        </motion.a>
+                      )}
+                      {project.demoUrl && (
+                        <motion.a
+                          href={project.demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-4 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-emerald-500/80 transition-all duration-300 hover:scale-110"
+                          aria-label={t('projects.playDemo')}
+                          whileHover={{ scale: 1.1, rotate: -5 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <PlayCircle className="w-6 h-6" />
+                        </motion.a>
+                      )}
+                      {project.videoUrl && (
+                        <motion.a
+                          href={project.videoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-4 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-emerald-500/80 transition-all duration-300 hover:scale-110"
+                          aria-label={t('projects.watchVideo')}
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <Video className="w-6 h-6" />
+                        </motion.a>
+                      )}
+                    </div>
                   </div>
-                ) : (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                  />
-                )}
-                <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
-                  {project.sourceUrl && (
-                    <a
-                      href={project.sourceUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white hover:text-emerald-400 transition-colors"
-                      aria-label={t('projects.viewSourceCode')}
-                    >
-                      <Github className="w-8 h-8" />
-                    </a>
-                  )}
-                  {project.demoUrl && (
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white hover:text-emerald-400 transition-colors"
-                      aria-label={t('projects.playDemo')}
-                    >
-                      <PlayCircle className="w-8 h-8" />
-                    </a>
-                  )}
-                  {project.videoUrl && (
-                    <a
-                      href={project.videoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white hover:text-emerald-400 transition-colors"
-                      aria-label={t('projects.watchVideo')}
-                    >
-                      <Video className="w-8 h-8" />
-                    </a>
-                  )}
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 hover-underline-animation">
-                  {project.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-100 rounded-full text-sm"
-                    >
-                      {tech}
+                  
+                  {/* Project status badge */}
+                  <div className="absolute top-4 right-4 z-30">
+                    <span className="px-3 py-1 bg-emerald-500/90 backdrop-blur-sm text-white text-xs font-semibold rounded-full">
+                      {project.websiteUrl ? 'Live' : 'Project'}
                     </span>
-                  ))}
+                  </div>
                 </div>
-                <div className="flex justify-between items-center mt-4">
-                  {project.demoUrl && (
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 flex items-center gap-1"
-                    >
-                      <PlayCircle className="w-4 h-4" />
-                      {t('projects.playDemo')}
-                    </a>
-                  )}
-                  {project.sourceUrl && (
-                    <a
-                      href={project.sourceUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 flex items-center gap-1"
-                    >
-                      <Github className="w-4 h-4" />
-                      {t('projects.viewSourceCode')}
-                    </a>
-                  )}
+                {/* Project Content */}
+                <div className="p-8">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                      {project.description}
+                    </p>
+                  </motion.div>
+
+                  {/* Technologies */}
+                  <motion.div 
+                    className="mb-6"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    viewport={{ once: true }}
+                  >
+                    <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3 uppercase tracking-wide">
+                      Technologies
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech, techIndex) => (
+                        <motion.span
+                          key={techIndex}
+                          className="px-4 py-2 bg-gradient-to-r from-emerald-100 to-emerald-200 dark:from-emerald-900/30 dark:to-emerald-800/30 text-emerald-800 dark:text-emerald-200 rounded-full text-sm font-medium border border-emerald-200 dark:border-emerald-700"
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          transition={{ 
+                            duration: 0.4, 
+                            delay: 0.3 + techIndex * 0.1 
+                          }}
+                          viewport={{ once: true }}
+                          whileHover={{ 
+                            scale: 1.05, 
+                            backgroundColor: "rgba(16, 185, 129, 0.1)",
+                            borderColor: "rgba(16, 185, 129, 0.3)"
+                          }}
+                        >
+                          {tech}
+                        </motion.span>
+                      ))}
+                    </div>
+                  </motion.div>
+
+                  {/* Action Buttons */}
+                  <motion.div 
+                    className="flex flex-wrap gap-3"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    viewport={{ once: true }}
+                  >
+                    {project.demoUrl && (
+                      <motion.a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-lg font-medium hover:from-emerald-700 hover:to-emerald-800 transition-all duration-300 shadow-lg hover:shadow-emerald-500/25"
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <PlayCircle className="w-4 h-4" />
+                        {t('projects.playDemo')}
+                      </motion.a>
+                    )}
+                    {project.sourceUrl && (
+                      <motion.a
+                        href={project.sourceUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300 border border-gray-200 dark:border-gray-600"
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <Github className="w-4 h-4" />
+                        {t('projects.viewSourceCode')}
+                      </motion.a>
+                    )}
+                    {project.videoUrl && (
+                      <motion.a
+                        href={project.videoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-6 py-3 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-lg font-medium hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-all duration-300 border border-blue-200 dark:border-blue-700"
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <Video className="w-4 h-4" />
+                        {t('projects.watchVideo')}
+                      </motion.a>
+                    )}
+                  </motion.div>
                 </div>
               </div>
-            </Card3D>
+            </motion.div>
           ))}
         </div>
       </div>

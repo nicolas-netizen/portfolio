@@ -32,7 +32,7 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ isOpen, onClose }) => {
           </svg>
         </button>
         <iframe
-          src="/cvnico.pdf"
+          src="/Nicolascv.pdf"
           className="w-full h-full rounded-lg"
           title="CV PDF"
         />

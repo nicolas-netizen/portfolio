@@ -3,6 +3,7 @@ import { Menu, X, Moon, Sun, Globe, Check, FileText } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useSpring } from 'motion/react';
 import PDFViewer from './PDFViewer';
+import ThemeSelector from './ThemeSelector';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -142,13 +143,7 @@ const Navigation = () => {
                   <Globe size={20} />
                 </button>
 
-                <button
-                  onClick={toggleTheme}
-                  className="p-2 text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors"
-                  aria-label={t('nav.toggleTheme')}
-                >
-                  {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-                </button>
+                <ThemeSelector />
               </div>
             </div>
 
@@ -193,12 +188,9 @@ const Navigation = () => {
                 >
                   <Globe size={20} />
                 </button>
-                <button
-                  onClick={toggleTheme}
-                  className="p-2 text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-500"
-                >
-                  {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-                </button>
+                <div onClick={() => setIsMenuOpen(false)}>
+                  <ThemeSelector />
+                </div>
               </div>
             </div>
           </div>

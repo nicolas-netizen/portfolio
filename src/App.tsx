@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -10,13 +10,14 @@ import LanguageNotification from './components/LanguageNotification';
 import CustomCursor from './components/CustomCursor';
 import LoadingScreen from './components/LoadingScreen';
 import ParticleNetwork from './components/ParticleNetwork';
-import AdminStats from './components/AdminStats';
-import AdminNotification from './components/AdminNotification';
 import Timeline from './components/Timeline';
 import DynamicBackground from './components/DynamicBackground';
 import Stats from './components/Stats';
 import Testimonials from './components/Testimonials';
 import GitHubActivity from './components/GitHubActivity';
+import InteractiveTerminal from './components/InteractiveTerminal';
+import PWAInstallBanner from './components/PWAInstallBanner';
+import GlobalSearch from './components/GlobalSearch';
 import emailjs from '@emailjs/browser';
 import { ChevronUp } from 'lucide-react';
 import { motion, useScroll, useSpring } from 'motion/react';
@@ -81,8 +82,6 @@ function App() {
             <DynamicBackground />
             <CustomCursor />
             <ParticleNetwork />
-            <AdminStats />
-            <AdminNotification />
             <Navigation />
             <main className="flex-grow">
               <Hero />
@@ -107,6 +106,15 @@ function App() {
                 <ChevronUp className="h-6 w-6" />
               </button>
             )}
+
+            {/* Interactive Terminal */}
+            <InteractiveTerminal />
+
+            {/* PWA Install Banner */}
+            <PWAInstallBanner />
+
+            {/* Global Search */}
+            <GlobalSearch />
 
             {/* Noise Overlay */}
             <div className="fixed inset-0 pointer-events-none z-10">

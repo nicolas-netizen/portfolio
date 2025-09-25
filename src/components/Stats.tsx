@@ -22,8 +22,8 @@ const Stats = () => {
     const technologies = [
       'React', 'TypeScript', 'JavaScript', 'HTML5/CSS3', 'Node.js', 'Python', 
       'C#', 'Tailwind CSS', 'Git', 'VS Code', 'Visual Studio', 'Unity',
-      'Flutter', 'Dart', 'Firebase', 'Express', 'MongoDB'
-    ].length; // 17 tecnologías
+      'Flutter', 'Dart', 'Express', 'MongoDB'
+    ].length; // 16 tecnologías
     
     // Proyectos activos (estimación basada en tu perfil)
     const activeProjects = 8; // Universidad + trabajo actual + proyectos personales
@@ -104,7 +104,7 @@ const Stats = () => {
           className="text-center mb-12"
         >
           <motion.h2 
-            className="text-3xl font-bold text-gray-900 dark:text-white mb-4 relative"
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4 relative"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -112,19 +112,19 @@ const Stats = () => {
           >
             {t('stats.title')}
             <motion.div
-              className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full"
+              className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 sm:w-20 lg:w-24 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
               viewport={{ once: true }}
             />
           </motion.h2>
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 px-4">
             {t('stats.subtitle')}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {statsItems.map((item, index) => (
             <motion.div
               key={item.label}
@@ -144,7 +144,7 @@ const Stats = () => {
               }}
               className="relative group"
             >
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 group-hover:border-emerald-200 dark:group-hover:border-emerald-700">
+              <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 group-hover:border-emerald-200 dark:group-hover:border-emerald-700">
                 <div className="flex flex-col items-center text-center">
                   <motion.div
                     initial={{ scale: 0, rotate: -180 }}

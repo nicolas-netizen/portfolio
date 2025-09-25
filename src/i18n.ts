@@ -144,7 +144,6 @@ i18n
           "projects.tech.mongodb": "MongoDB",
           "projects.tech.flutter": "Flutter",
           "projects.tech.dart": "Dart",
-          "projects.tech.firebase": "Firebase",
 
           // Testimonials section
           "testimonials.title": "What People Say",
@@ -340,7 +339,6 @@ i18n
           "projects.tech.mongodb": "MongoDB",
           "projects.tech.flutter": "Flutter",
           "projects.tech.dart": "Dart",
-          "projects.tech.firebase": "Firebase",
 
           // Testimonials section
           "testimonials.title": "Lo Que Dicen",

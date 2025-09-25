@@ -34,21 +34,21 @@ const About = () => {
             ].map((item, index) => (
               <motion.div
                 key={item.label}
-                className="flex items-center space-x-4 p-5 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 rounded-2xl hover:shadow-xl transition-all duration-300 group border border-gray-200 dark:border-gray-600"
+                className="flex items-center space-x-3 sm:space-x-4 p-3 sm:p-4 lg:p-5 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 rounded-2xl hover:shadow-xl transition-all duration-300 group border border-gray-200 dark:border-gray-600"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
                 whileHover={{ scale: 1.03, x: 8, y: -2 }}
               >
                 <motion.div 
-                  className={`p-4 rounded-2xl bg-white dark:bg-gray-600 shadow-lg group-hover:shadow-xl transition-all duration-300`}
+                  className={`p-2 sm:p-3 lg:p-4 rounded-2xl bg-white dark:bg-gray-600 shadow-lg group-hover:shadow-xl transition-all duration-300`}
                   whileHover={{ rotate: 5, scale: 1.1 }}
                 >
-                  <item.icon className={`w-6 h-6 ${item.color}`} />
+                  <item.icon className={`w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 ${item.color}`} />
                 </motion.div>
-                <div className="flex-1">
-                  <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">{item.label}</p>
-                  <p className="text-gray-900 dark:text-white font-semibold text-lg">{item.value}</p>
+                <div className="flex-1 min-w-0">
+                  <p className="text-xs sm:text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">{item.label}</p>
+                  <p className="text-sm sm:text-base lg:text-lg text-gray-900 dark:text-white font-semibold break-words">{item.value}</p>
                 </div>
               </motion.div>
             ))}
@@ -69,19 +69,19 @@ const About = () => {
             ].map((fact, index) => (
               <motion.div 
                 key={index}
-                className={`flex items-start space-x-4 p-5 rounded-2xl ${fact.bgColor} hover:shadow-xl transition-all duration-300 group border border-gray-200 dark:border-gray-600`}
+                className={`flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 lg:p-5 rounded-2xl ${fact.bgColor} hover:shadow-xl transition-all duration-300 group border border-gray-200 dark:border-gray-600`}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
                 whileHover={{ scale: 1.03, x: 8, y: -2 }}
               >
                 <motion.div 
-                  className={`p-3 rounded-2xl bg-white dark:bg-gray-600 shadow-lg group-hover:shadow-xl transition-all duration-300`}
+                  className={`p-2 sm:p-3 rounded-2xl bg-white dark:bg-gray-600 shadow-lg group-hover:shadow-xl transition-all duration-300`}
                   whileHover={{ rotate: 10, scale: 1.1 }}
                 >
-                  <fact.icon className={`w-6 h-6 ${fact.color}`} />
+                  <fact.icon className={`w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 ${fact.color}`} />
                 </motion.div>
-                <p className="text-gray-700 dark:text-gray-300 font-medium leading-relaxed text-lg">{fact.text}</p>
+                <p className="text-gray-700 dark:text-gray-300 font-medium leading-relaxed text-sm sm:text-base lg:text-lg">{fact.text}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -89,7 +89,7 @@ const About = () => {
       case 'interests':
         return (
           <motion.div 
-            className="grid grid-cols-2 gap-4"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
@@ -102,7 +102,7 @@ const About = () => {
             ].map((interest, index) => (
               <motion.div 
                 key={index}
-                className={`flex flex-col items-center p-6 rounded-3xl ${interest.bgColor} hover:shadow-2xl transition-all duration-300 group cursor-pointer border border-gray-200 dark:border-gray-600`}
+                className={`flex flex-col items-center p-4 sm:p-6 rounded-3xl ${interest.bgColor} hover:shadow-2xl transition-all duration-300 group cursor-pointer border border-gray-200 dark:border-gray-600`}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
@@ -110,13 +110,13 @@ const About = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <motion.div
-                  className={`p-5 rounded-3xl bg-white dark:bg-gray-600 shadow-xl group-hover:shadow-2xl transition-all duration-300 mb-4`}
+                  className={`p-3 sm:p-4 lg:p-5 rounded-3xl bg-white dark:bg-gray-600 shadow-xl group-hover:shadow-2xl transition-all duration-300 mb-3 sm:mb-4`}
                   whileHover={{ rotate: 360, scale: 1.1 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <interest.icon className={`w-10 h-10 ${interest.color}`} />
+                  <interest.icon className={`w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 ${interest.color}`} />
                 </motion.div>
-                <span className="text-gray-700 dark:text-gray-300 font-bold text-center group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300 text-lg">
+                <span className="text-gray-700 dark:text-gray-300 font-bold text-center group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300 text-sm sm:text-base lg:text-lg">
                   {interest.text}
                 </span>
               </motion.div>
@@ -163,22 +163,22 @@ const About = () => {
           </motion.p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Left side - Description and CV */}
           <motion.div 
-            className="space-y-8"
+            className="space-y-6 lg:space-y-8"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
             <motion.div 
-              className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm p-8 rounded-3xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50"
+              className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-3xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50"
               whileHover={{ y: -8, scale: 1.02, shadow: "0 25px 50px rgba(0,0,0,0.15)" }}
               transition={{ duration: 0.3 }}
             >
               <motion.p 
-                className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6"
+                className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-4 sm:mb-6"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
@@ -196,7 +196,7 @@ const About = () => {
               >
                 <motion.button 
                   onClick={handleDownloadCV}
-                  className="group flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-2xl font-semibold hover:from-emerald-700 hover:to-emerald-800 transition-all duration-300 shadow-lg hover:shadow-emerald-500/25 relative overflow-hidden"
+                  className="group flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-2xl font-semibold hover:from-emerald-700 hover:to-emerald-800 transition-all duration-300 shadow-lg hover:shadow-emerald-500/25 relative overflow-hidden w-full sm:w-auto"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -210,7 +210,7 @@ const About = () => {
 
           {/* Right side - Tabs */}
           <motion.div 
-            className="space-y-6"
+            className="space-y-4 sm:space-y-6"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -223,7 +223,7 @@ const About = () => {
             >
               {/* Tab Navigation */}
               <motion.div 
-                className="flex bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 rounded-t-3xl"
+                className="flex bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 rounded-t-3xl overflow-x-auto"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
@@ -236,7 +236,7 @@ const About = () => {
                 ].map((tab, index) => (
                   <motion.button
                     key={tab.key}
-                    className={`flex-1 flex items-center justify-center gap-2 px-4 py-4 font-medium transition-all duration-300 relative rounded-t-2xl ${
+                    className={`flex-1 flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-4 py-3 sm:py-4 font-medium transition-all duration-300 relative rounded-t-2xl whitespace-nowrap min-w-0 ${
                       activeTab === tab.key
                         ? 'text-emerald-600 bg-white dark:bg-gray-800 shadow-lg'
                         : 'text-gray-600 dark:text-gray-300 hover:text-emerald-600 hover:bg-white/50 dark:hover:bg-gray-600/50'
@@ -248,8 +248,8 @@ const About = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: 0.4 + index * 0.1 }}
                   >
-                    <tab.icon className="w-4 h-4" />
-                    <span className="hidden sm:inline">{tab.label}</span>
+                    <tab.icon className="w-3 h-3 sm:w-4 sm:h-4" />
+                    <span className="text-xs sm:text-sm hidden sm:inline">{tab.label}</span>
                     {activeTab === tab.key && (
                       <motion.div
                         className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full"
@@ -263,7 +263,7 @@ const About = () => {
 
               {/* Tab Content */}
               <motion.div 
-                className="p-8 min-h-[300px] rounded-b-3xl"
+                className="p-4 sm:p-6 lg:p-8 min-h-[250px] sm:min-h-[300px] rounded-b-3xl"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}

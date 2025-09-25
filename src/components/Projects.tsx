@@ -31,7 +31,6 @@ const Projects = () => {
     'Unity',
     'Flutter',
     'Dart',
-    'Firebase',
     'MongoDB',
     'Express',
     'Tailwind CSS',
@@ -137,7 +136,7 @@ const Projects = () => {
           viewport={{ once: true }}
         >
           <motion.h2 
-            className="text-5xl font-bold mb-4 bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent relative"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent relative"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -145,7 +144,7 @@ const Projects = () => {
           >
             {t('projects.title')}
             <motion.div
-              className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full"
+              className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 sm:w-20 lg:w-24 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
@@ -153,7 +152,7 @@ const Projects = () => {
             />
           </motion.h2>
           <motion.p 
-            className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
+            className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}

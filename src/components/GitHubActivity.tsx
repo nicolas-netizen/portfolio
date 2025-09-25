@@ -97,22 +97,6 @@ const GitHubActivity = () => {
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <a
-            href={`https://github.com/${username}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center px-6 py-3 bg-gray-900 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors"
-          >
-            <Activity className="w-5 h-5 mr-2" />
-            {t('github.viewProfile')}
-          </a>
-        </motion.div>
       </div>
     </section>
   );

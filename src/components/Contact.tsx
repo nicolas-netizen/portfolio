@@ -58,7 +58,7 @@ const Contact = () => {
           viewport={{ once: true }}
         >
           <motion.h2 
-            className="text-3xl font-bold text-gray-900 dark:text-white mb-4 relative"
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4 relative"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -66,7 +66,7 @@ const Contact = () => {
           >
             {t('contact.title')}
             <motion.div
-              className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full"
+              className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 sm:w-20 lg:w-24 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
@@ -74,7 +74,7 @@ const Contact = () => {
             />
           </motion.h2>
           <motion.p 
-            className="text-gray-600 dark:text-gray-300"
+            className="text-sm sm:text-base text-gray-600 dark:text-gray-300 px-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -85,7 +85,7 @@ const Contact = () => {
         </motion.div>
 
         <motion.div 
-          className="bg-gray-50 dark:bg-gray-700 rounded-lg p-8 shadow-lg"
+          className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 sm:p-6 lg:p-8 shadow-lg"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}

@@ -168,22 +168,18 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             style={{ y, opacity }}
           >
-            <motion.img
-              src="https://project-beta-pink.vercel.app/Fotonico.jpg"
-              alt="Nicolas Paniagua"
-              loading="eager"
-              className="rounded-full w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 object-cover mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300"
+            <motion.div
+              className="rounded-full w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300 bg-gradient-to-br from-emerald-500 to-blue-600 flex items-center justify-center"
               whileHover={{ scale: 1.05, rotate: 2 }}
               whileTap={{ scale: 0.95 }}
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              onError={(e) => {
-                console.error('Error loading image:', e);
-                console.log('Trying fallback image...');
-                e.currentTarget.src = '/Fotonico.jpg';
-              }}
-            />
+            >
+              <span className="text-white text-4xl sm:text-5xl md:text-6xl font-bold">
+                NP
+              </span>
+            </motion.div>
           </motion.div>
         </div>
       </div>

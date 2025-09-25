@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Code2, Briefcase, Coffee, Calendar } from 'lucide-react';
+import GitHubStats from './GitHubStats';
 
 const Stats = () => {
   const { t } = useTranslation();
@@ -193,6 +194,17 @@ const Stats = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* GitHub Stats */}
+        <motion.div
+          className="mt-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <GitHubStats />
+        </motion.div>
       </div>
     </section>
   );

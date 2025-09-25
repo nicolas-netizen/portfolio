@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import { Github, PlayCircle, Video } from 'lucide-react';
-import { motion } from 'motion/react';
+import { Github, PlayCircle, Video, Filter, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { useState, useMemo } from 'react';
 
 interface ProjectType {
   title: string;
@@ -15,6 +16,27 @@ interface ProjectType {
 
 const Projects = () => {
   const { t } = useTranslation();
+  const [selectedFilter, setSelectedFilter] = useState<string>('all');
+  const [showFilters, setShowFilters] = useState(false);
+
+  // Available technologies for filtering
+  const availableTechnologies = [
+    'all',
+    'React',
+    'TypeScript',
+    'JavaScript',
+    'Node.js',
+    'Python',
+    'C#',
+    'Unity',
+    'Flutter',
+    'Dart',
+    'Firebase',
+    'MongoDB',
+    'Express',
+    'Tailwind CSS',
+    'HTML5/CSS3'
+  ];
 
   const projects: ProjectType[] = [
     {
@@ -94,6 +116,16 @@ const Projects = () => {
     },
   ];
 
+  // Filter projects based on selected technology
+  const filteredProjects = useMemo(() => {
+    if (selectedFilter === 'all') return projects;
+    return projects.filter(project => 
+      project.technologies.some(tech => 
+        tech.toLowerCase().includes(selectedFilter.toLowerCase())
+      )
+    );
+  }, [projects, selectedFilter]);
+
   return (
     <section id="projects" className="py-20 relative bg-gradient-to-br from-gray-50 to-emerald-50 dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-7xl mx-auto px-4">
@@ -130,9 +162,92 @@ const Projects = () => {
             {t('projects.subtitle') || 'A collection of my recent work and personal projects'}
           </motion.p>
         </motion.div>
+
+        {/* Filter Section */}
+        <motion.div
+          className="mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+              <motion.button
+                onClick={() => setShowFilters(!showFilters)}
+                className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700 w-full sm:w-auto"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Filter size={18} className="sm:w-5 sm:h-5" />
+                <span className="font-medium text-sm sm:text-base">Filter by Technology</span>
+              </motion.button>
+              
+              {selectedFilter !== 'all' && (
+                <motion.button
+                  onClick={() => setSelectedFilter('all')}
+                  className="flex items-center gap-2 px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-full text-sm font-medium hover:bg-emerald-200 dark:hover:bg-emerald-900/50 transition-colors"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {selectedFilter}
+                  <X size={16} />
+                </motion.button>
+              )}
+            </div>
+            
+            <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 text-center sm:text-right">
+              Showing {filteredProjects.length} of {projects.length} projects
+            </div>
+          </div>
+
+          {/* Filter Options */}
+          <AnimatePresence>
+            {showFilters && (
+              <motion.div
+                className="mt-6 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700"
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="flex flex-wrap gap-2 sm:gap-3">
+                  {availableTechnologies.map((tech) => (
+                    <motion.button
+                      key={tech}
+                      onClick={() => {
+                        setSelectedFilter(tech);
+                        setShowFilters(false);
+                      }}
+                      className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
+                        selectedFilter === tech
+                          ? 'bg-emerald-600 text-white shadow-lg'
+                          : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 hover:text-emerald-700 dark:hover:text-emerald-300'
+                      }`}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {tech === 'all' ? 'All Projects' : tech}
+                    </motion.button>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+        <AnimatePresence mode="wait">
+          <motion.div 
+            key={selectedFilter}
+            className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+          >
+            {filteredProjects.map((project, index) => (
             <motion.div
               key={index}
               className="group"
@@ -330,7 +445,8 @@ const Projects = () => {
               </div>
             </motion.div>
           ))}
-        </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );

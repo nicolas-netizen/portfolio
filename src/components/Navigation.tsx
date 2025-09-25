@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Moon, Sun, Globe, Check, FileText } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { motion, useScroll, useSpring } from 'motion/react';
 import PDFViewer from './PDFViewer';
 
 const Navigation = () => {
@@ -9,7 +10,16 @@ const Navigation = () => {
   const [notification, setNotification] = useState('');
   const [notificationIcon, setNotificationIcon] = useState<'theme' | 'language' | null>(null);
   const [isPDFOpen, setIsPDFOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { t, i18n } = useTranslation();
+
+  // Scroll progress
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   const menuItems = [
     { key: 'nav.home', href: 'home' },
@@ -42,6 +52,15 @@ const Navigation = () => {
     }
   }, [darkMode]);
 
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const showNotification = (message: string, icon: 'theme' | 'language') => {
     setNotification(message);
     setNotificationIcon(icon);
@@ -71,7 +90,22 @@ const Navigation = () => {
 
   return (
     <>
-      <nav className="fixed w-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm z-40 shadow-sm">
+      {/* Progress Bar */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-emerald-600 origin-left z-50"
+        style={{ scaleX }}
+      />
+      
+      <motion.nav 
+        className={`fixed w-full z-40 transition-all duration-300 ${
+          scrolled 
+            ? 'bg-white/95 dark:bg-gray-800/95 backdrop-blur-md shadow-lg' 
+            : 'bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-sm'
+        }`}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <span className="text-2xl font-bold text-emerald-600 hover:text-emerald-500 transition-colors cursor-pointer">
@@ -169,7 +203,7 @@ const Navigation = () => {
             </div>
           </div>
         )}
-      </nav>
+      </motion.nav>
 
       {/* Notification */}
       {notification && (

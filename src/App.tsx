@@ -18,12 +18,16 @@ import GitHubActivity from './components/GitHubActivity';
 import InteractiveTerminal from './components/InteractiveTerminal';
 import PWAInstallBanner from './components/PWAInstallBanner';
 import GlobalSearch from './components/GlobalSearch';
+import { useAnalytics } from './hooks/useAnalytics';
 import ThemeProvider from './components/ThemeProvider';
 import emailjs from '@emailjs/browser';
 import { motion, useScroll, useSpring } from 'motion/react';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  
+  // Analytics hook
+  const analytics = useAnalytics();
   
   // Scroll progress for progress bar
   const { scrollYProgress } = useScroll();

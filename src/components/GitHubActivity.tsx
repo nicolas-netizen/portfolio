@@ -1,53 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Github, Star, GitFork, Activity } from 'lucide-react';
-import { getGitHubHeaders } from '../config/github';
-
-interface Repository {
-  name: string;
-  description: string;
-  stars: number;
-  forks: number;
-  url: string;
-}
+import { useGitHubData } from '../hooks/useGitHubData';
 
 const GitHubActivity = () => {
   const { t } = useTranslation();
-  const [repos, setRepos] = useState<Repository[]>([]);
-  const username = 'nicolas-netizen';
-
-  useEffect(() => {
-    const fetchGitHubData = async () => {
-      try {
-        const response = await fetch(`https://api.github.com/users/${username}/repos`, {
-          headers: getGitHubHeaders()
-        });
-        
-        if (!response.ok) {
-          console.error('GitHub API Error:', response.status, response.statusText);
-          throw new Error(`Failed to fetch repositories: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        const formattedRepos = data
-          .sort((a: any, b: any) => b.stargazers_count - a.stargazers_count)
-          .slice(0, 3)
-          .map((repo: any) => ({
-            name: repo.name,
-            description: repo.description,
-            stars: repo.stargazers_count,
-            forks: repo.forks_count,
-            url: repo.html_url,
-          }));
-        setRepos(formattedRepos);
-      } catch (error) {
-        console.error('Error fetching GitHub data:', error);
-      }
-    };
-
-    fetchGitHubData();
-  }, []);
+  const { user, repos, loading, error } = useGitHubData('nicolas-netizen');
 
   return (
     <section className="py-20 theme-surface">

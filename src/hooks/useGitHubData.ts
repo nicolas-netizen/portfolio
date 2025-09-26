@@ -80,9 +80,19 @@ export const useGitHubData = (username: string = 'nicolas-netizen') => {
             return acc;
           }, {} as Record<string, number>);
           
+          // Actualizar el usuario con las estadísticas calculadas
+          const updatedUser = {
+            ...mockUser,
+            public_repos: totalRepos,
+            followers: Math.floor(totalStars / 3), // Estimación basada en stars
+            following: Math.floor(totalForks / 2)  // Estimación basada en forks
+          };
+          
           setData({
-            user: mockUser,
+            user: updatedUser,
             repos: mockRepos,
+            totalStars,
+            totalForks,
             languages: languagePercentages,
             loading: false,
             error: null
@@ -92,7 +102,8 @@ export const useGitHubData = (username: string = 'nicolas-netizen') => {
             totalStars,
             totalForks,
             totalRepos,
-            languages: languagePercentages
+            languages: languagePercentages,
+            updatedUser
           });
           return;
         }

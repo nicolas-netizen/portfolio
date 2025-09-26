@@ -41,11 +41,11 @@ export const MOCK_GITHUB_DATA = {
   user: {
     login: 'nicolas-netizen',
     name: 'Nicolas Paniagua',
-    bio: 'Full Stack Developer | React, TypeScript, Node.js',
+    bio: 'Full Stack Developer | React, TypeScript, Node.js | Mobile & Game Developer',
     avatar_url: 'https://avatars.githubusercontent.com/u/12345678?v=4',
-    public_repos: 25,
-    followers: 12,
-    following: 8,
+    public_repos: 6,
+    followers: 18,
+    following: 12,
     html_url: 'https://github.com/nicolas-netizen',
     created_at: '2020-01-01T00:00:00Z',
     updated_at: '2024-01-25T00:00:00Z'
@@ -83,6 +83,39 @@ export const MOCK_GITHUB_DATA = {
       forks_count: 1,
       language: 'TypeScript',
       updated_at: '2024-01-15T00:00:00Z'
+    },
+    {
+      id: 9991,
+      name: 'Juntea - Events App',
+      full_name: 'nicolas-netizen/juntea-events',
+      description: 'Mobile application for event management built with Flutter and Dart',
+      html_url: 'https://github.com/nicolas-netizen/juntea-events',
+      stargazers_count: 47,
+      forks_count: 12,
+      language: 'Dart',
+      updated_at: '2024-01-15T00:00:00Z'
+    },
+    {
+      id: 9992,
+      name: 'Chapiri E-commerce',
+      full_name: 'nicolas-netizen/chapiri-ecommerce',
+      description: 'Full-stack e-commerce platform with React, Node.js and MongoDB',
+      html_url: 'https://github.com/nicolas-netizen/chapiri-ecommerce',
+      stargazers_count: 32,
+      forks_count: 8,
+      language: 'TypeScript',
+      updated_at: '2023-11-20T00:00:00Z'
+    },
+    {
+      id: 9993,
+      name: 'Goblin Attack Game',
+      full_name: 'nicolas-netizen/goblin-attack',
+      description: '2D platformer game developed with Unity and C#',
+      html_url: 'https://github.com/nicolas-netizen/goblin-attack',
+      stargazers_count: 28,
+      forks_count: 6,
+      language: 'C#',
+      updated_at: '2023-09-10T00:00:00Z'
     }
   ]
 };

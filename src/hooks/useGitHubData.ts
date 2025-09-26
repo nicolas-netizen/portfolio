@@ -64,12 +64,35 @@ export const useGitHubData = (username: string = 'nicolas-netizen') => {
           const mockUser = MOCK_GITHUB_DATA.user as GitHubUser;
           const mockRepos = MOCK_GITHUB_DATA.repos as GitHubRepo[];
           
+          // Calcular estadísticas realistas basadas en los proyectos
+          const totalStars = mockRepos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
+          const totalForks = mockRepos.reduce((sum, repo) => sum + repo.forks_count, 0);
+          const languages = mockRepos.reduce((acc, repo) => {
+            const lang = repo.language || 'Other';
+            acc[lang] = (acc[lang] || 0) + 1;
+            return acc;
+          }, {} as Record<string, number>);
+          
+          // Convertir a porcentajes
+          const totalRepos = mockRepos.length;
+          const languagePercentages = Object.entries(languages).reduce((acc, [lang, count]) => {
+            acc[lang] = Math.round((count / totalRepos) * 100);
+            return acc;
+          }, {} as Record<string, number>);
+          
           setData({
             user: mockUser,
             repos: mockRepos,
-            languages: { TypeScript: 60, JavaScript: 30, CSS: 10 },
+            languages: languagePercentages,
             loading: false,
             error: null
+          });
+          
+          console.log('📊 GitHub Stats Calculated:', {
+            totalStars,
+            totalForks,
+            totalRepos,
+            languages: languagePercentages
           });
           return;
         }

@@ -233,10 +233,13 @@ const getLocalAIResponse = async (message: string, memory?: ConversationMemory):
   // Aplicar variaciones para parecer más natural
   const variations = [
     `${selectedPattern}`,
-    `Interesante pregunta. ${selectedPattern}`,
-    `Basándome en mi análisis del portfolio, ${selectedPattern.toLowerCase()}`,
+    `¡Excelente pregunta! ${selectedPattern}`,
+    `Te cuento: ${selectedPattern.toLowerCase()}`,
+    `Según mi análisis: ${selectedPattern.toLowerCase()}`,
+    `Muy buena pregunta. ${selectedPattern}`,
     `Déjame explicarte: ${selectedPattern.toLowerCase()}`,
-    `Por lo que veo en su trabajo, ${selectedPattern.toLowerCase()}`
+    `Perfecto, ${selectedPattern.toLowerCase()}`,
+    `Claro, ${selectedPattern.toLowerCase()}`
   ];
   
   const finalResponse = variations[Math.floor(Math.random() * variations.length)];
@@ -462,8 +465,14 @@ const learnFromPatterns = (message: string, response: string, memory?: Conversat
   
   if (similarQuestions.length > 0) {
     // Mejorar la respuesta con más contexto
-    const improvedResponse = `${response} Por cierto, veo que te interesa este tema. ¿Te gustaría que profundice más en algún aspecto específico?`;
-    return improvedResponse;
+    const followUps = [
+      ' ¿Te gustaría saber más sobre algún aspecto específico?',
+      ' ¿Hay algo más que te interese?',
+      ' ¿Quieres que profundice en algún detalle?',
+      ' ¿Te interesa conocer más sobre esto?'
+    ];
+    const followUp = followUps[Math.floor(Math.random() * followUps.length)];
+    return `${response}${followUp}`;
   }
   
   // Si el usuario está en modo "curioso", dar más detalles

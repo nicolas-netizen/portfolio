@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Github, Star, GitFork, Activity } from 'lucide-react';
+import { getGitHubHeaders } from '../config/github';
 
 interface Repository {
   name: string;
@@ -19,7 +20,15 @@ const GitHubActivity = () => {
   useEffect(() => {
     const fetchGitHubData = async () => {
       try {
-        const response = await fetch(`https://api.github.com/users/${username}/repos`);
+        const response = await fetch(`https://api.github.com/users/${username}/repos`, {
+          headers: getGitHubHeaders()
+        });
+        
+        if (!response.ok) {
+          console.error('GitHub API Error:', response.status, response.statusText);
+          throw new Error(`Failed to fetch repositories: ${response.status}`);
+        }
+        
         const data = await response.json();
         const formattedRepos = data
           .sort((a: any, b: any) => b.stargazers_count - a.stargazers_count)

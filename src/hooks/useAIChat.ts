@@ -247,9 +247,35 @@ const getLocalAIResponse = async (message: string, memory?: ConversationMemory):
 // Función para obtener datos de GitHub en tiempo real
 const getGitHubData = async () => {
   try {
-    // Deshabilitado temporalmente para evitar errores 403
-    console.log('GitHub API disabled temporarily');
-    return null;
+    const { getGitHubHeaders } = await import('../config/github');
+    
+    const response = await fetch('https://api.github.com/users/nicolas-netizen', {
+      headers: getGitHubHeaders()
+    });
+    
+    if (!response.ok) {
+      console.error('GitHub API Error:', response.status, response.statusText);
+      throw new Error(`Failed to fetch user data: ${response.status}`);
+    }
+    
+    const userData = await response.json();
+    
+    const reposResponse = await fetch('https://api.github.com/users/nicolas-netizen/repos?sort=updated&per_page=10', {
+      headers: getGitHubHeaders()
+    });
+    
+    if (!reposResponse.ok) {
+      console.error('GitHub API Error:', reposResponse.status, reposResponse.statusText);
+      throw new Error(`Failed to fetch repositories: ${reposResponse.status}`);
+    }
+    
+    const reposData = await reposResponse.json();
+    
+    return {
+      user: userData,
+      repos: reposData,
+      lastUpdated: new Date().toISOString()
+    };
   } catch (error) {
     console.log('GitHub API error, using cached data:', error);
     return null;

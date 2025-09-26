@@ -1,0 +1,16 @@
+# Ignorar archivos de desarrollo
+node_modules
+.env.local
+.env.development
+.env.test
+
+# Ignorar archivos de build anteriores
+dist
+.vercel
+
+# Ignorar archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Forzar rebuild completo
+*.cache

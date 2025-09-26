@@ -169,7 +169,7 @@ const Hero = () => {
             style={{ y, opacity }}
           >
             <motion.img
-              src="/Fotonico.jpg"
+              src="/Fotonico.png"
               alt="Nicolas Paniagua"
               loading="eager"
               className="rounded-full w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 object-cover mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300"

@@ -13,10 +13,19 @@ RUN npm ci --silent
 COPY . .
 
 # Clean any existing dist folder and build
-RUN rm -rf dist && npm run build
+RUN rm -rf dist && \
+    echo "=== Starting build process ===" && \
+    npm run build && \
+    echo "=== Build process completed ==="
 
-# Verify build output
-RUN ls -la dist/ && ls -la dist/assets/
+# Verify build output with detailed information
+RUN echo "=== Build output verification ===" && \
+    ls -la dist/ && \
+    echo "=== Assets directory ===" && \
+    ls -la dist/assets/ && \
+    echo "=== HTML file content ===" && \
+    head -50 dist/index.html && \
+    echo "=== Build completed successfully ==="
 
 # Production stage
 FROM nginx:alpine

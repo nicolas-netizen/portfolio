@@ -19,7 +19,8 @@ RUN rm -rf dist && \
     echo "=== Build process completed ===" && \
     echo "=== Verifying build integrity ===" && \
     test -f dist/index.html && \
-    test -f dist/assets/index.ec866c15.js && \
+    test -d dist/assets && \
+    test $(ls dist/assets/*.js | wc -l) -gt 0 && \
     echo "=== Build verification passed ==="
 
 # Verify build output with detailed information

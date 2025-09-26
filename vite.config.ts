@@ -28,4 +28,8 @@ export default defineConfig({
       'Cache-Control': 'no-cache, no-store, must-revalidate',
     },
   },
+  preview: {
+    port: 3000,
+    host: true
+  }
 })

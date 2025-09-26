@@ -52,41 +52,63 @@
     <script>
       // Force clear all caches and reload if needed
       (function() {
-        const buildTime = '2025-09-26T03:19:42.650Z'; // This will be updated on each build
-        const lastBuildTime = localStorage.getItem('lastBuildTime');
-        
-        if (lastBuildTime !== buildTime) {
-          console.log('New build detected, clearing all caches...');
+        try {
+          const buildTime = '2025-09-26T03:19:42.650Z'; // This will be updated on each build
+          const lastBuildTime = localStorage.getItem('lastBuildTime');
           
-          // Clear localStorage
-          localStorage.clear();
-          sessionStorage.clear();
-          
-          // Clear all caches
-          if ('caches' in window) {
-            caches.keys().then(function(names) {
-              for (let name of names) {
-                caches.delete(name);
-              }
-            });
+          if (lastBuildTime !== buildTime) {
+            console.log('New build detected, clearing all caches...');
+            
+            // Clear localStorage safely
+            try {
+              localStorage.clear();
+              sessionStorage.clear();
+            } catch (e) {
+              console.warn('Could not clear storage:', e);
+            }
+            
+            // Clear all caches safely
+            if ('caches' in window) {
+              caches.keys().then(function(names) {
+                return Promise.all(names.map(function(name) {
+                  return caches.delete(name).catch(function(err) {
+                    console.warn('Could not delete cache:', name, err);
+                  });
+                }));
+              }).catch(function(err) {
+                console.warn('Cache cleanup failed:', err);
+              });
+            }
+            
+            // Unregister all service workers safely
+            if ('serviceWorker' in navigator) {
+              navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                return Promise.all(registrations.map(function(registration) {
+                  return registration.unregister().catch(function(err) {
+                    console.warn('Could not unregister service worker:', err);
+                  });
+                }));
+              }).catch(function(err) {
+                console.warn('Service worker cleanup failed:', err);
+              });
+            }
+            
+            // Store new build time safely
+            try {
+              localStorage.setItem('lastBuildTime', buildTime);
+            } catch (e) {
+              console.warn('Could not store build time:', e);
+            }
+            
+            // Force reload if this is not the first visit
+            if (lastBuildTime) {
+              setTimeout(function() {
+                window.location.reload(true);
+              }, 100); // Small delay to ensure cleanup completes
+            }
           }
-          
-          // Unregister all service workers
-          if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.getRegistrations().then(function(registrations) {
-              for(let registration of registrations) {
-                registration.unregister();
-              }
-            });
-          }
-          
-          // Store new build time
-          localStorage.setItem('lastBuildTime', buildTime);
-          
-          // Force reload if this is not the first visit
-          if (lastBuildTime) {
-            window.location.reload(true);
-          }
+        } catch (error) {
+          console.error('Cache invalidation script failed:', error);
         }
       })();
     </script>

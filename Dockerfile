@@ -16,7 +16,11 @@ COPY . .
 RUN rm -rf dist && \
     echo "=== Starting build process ===" && \
     npm run build && \
-    echo "=== Build process completed ==="
+    echo "=== Build process completed ===" && \
+    echo "=== Verifying build integrity ===" && \
+    test -f dist/index.html && \
+    test -f dist/assets/index.ec866c15.js && \
+    echo "=== Build verification passed ==="
 
 # Verify build output with detailed information
 RUN echo "=== Build output verification ===" && \

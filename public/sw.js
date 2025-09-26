@@ -5,15 +5,21 @@ const urlsToCache = [
 
 // Install event
 self.addEventListener('install', (event) => {
+  console.log('Service Worker installing...');
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
-        console.log('Opened cache');
+        console.log('Opened cache:', CACHE_NAME);
         return cache.addAll(urlsToCache);
       })
+      .then(() => {
+        console.log('Cache installation completed');
+        return self.skipWaiting(); // Force activation
+      })
       .catch((error) => {
-        console.log('Cache installation failed:', error);
+        console.error('Cache installation failed:', error);
         // Continue with installation even if caching fails
+        return self.skipWaiting();
       })
   );
 });

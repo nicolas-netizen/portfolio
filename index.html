@@ -5,8 +5,11 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
     <link rel="manifest" href="/manifest.json" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="theme-color" content="#10B981" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="description" content="Nicolas Paniagua - Full Stack Developer Portfolio. Passionate about creating efficient and innovative digital solutions with modern web technologies." />
     <meta name="keywords" content="Nicolas Paniagua, Full Stack Developer, React, TypeScript, Node.js, Portfolio, Web Development, Software Engineer" />
     <meta name="author" content="Nicolas Paniagua" />
@@ -49,7 +52,7 @@
     <script>
       // Force clear all caches and reload if needed
       (function() {
-        const buildTime = '2025-09-26T03:06:06.633Z'; // This will be updated on each build
+        const buildTime = '2025-09-26T03:19:42.650Z'; // This will be updated on each build
         const lastBuildTime = localStorage.getItem('lastBuildTime');
         
         if (lastBuildTime !== buildTime) {
@@ -84,6 +87,36 @@
           if (lastBuildTime) {
             window.location.reload(true);
           }
+        }
+      })();
+    </script>
+    
+    <!-- Mobile diagnostics script -->
+    <script>
+      // Mobile diagnostics
+      (function() {
+        console.log('=== Mobile Diagnostics ===');
+        console.log('User Agent:', navigator.userAgent);
+        console.log('Screen:', screen.width + 'x' + screen.height);
+        console.log('Viewport:', window.innerWidth + 'x' + window.innerHeight);
+        console.log('Connection:', navigator.connection ? navigator.connection.effectiveType : 'unknown');
+        console.log('Touch Support:', 'ontouchstart' in window);
+        console.log('Service Worker Support:', 'serviceWorker' in navigator);
+        console.log('Cache Support:', 'caches' in window);
+        console.log('Local Storage Support:', typeof(Storage) !== "undefined");
+        
+        // Check for common mobile issues
+        if (window.innerWidth < 768) {
+          console.log('Mobile device detected');
+        }
+        
+        // Check if page is loading
+        if (document.readyState === 'loading') {
+          console.log('Page is still loading...');
+        } else if (document.readyState === 'interactive') {
+          console.log('Page is interactive');
+        } else if (document.readyState === 'complete') {
+          console.log('Page is fully loaded');
         }
       })();
     </script>

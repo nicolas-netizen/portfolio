@@ -1,7 +1,5 @@
-const CACHE_NAME = 'nicolas-portfolio-v2';
+const CACHE_NAME = 'nicolas-portfolio-v3';
 const urlsToCache = [
-  '/',
-  '/index.html',
   '/favicon.svg'
 ];
 
@@ -30,6 +28,21 @@ self.addEventListener('fetch', (event) => {
   // Skip external domains (like Kaspersky)
   const url = new URL(event.request.url);
   if (url.origin !== location.origin) {
+    return;
+  }
+
+  // Don't cache HTML files to ensure fresh asset references
+  if (event.request.url.endsWith('.html') || event.request.url.endsWith('/')) {
+    event.respondWith(
+      fetch(event.request)
+        .catch((error) => {
+          console.log('Fetch failed for:', event.request.url, error);
+          return new Response('Network error', {
+            status: 503,
+            statusText: 'Service Unavailable'
+          });
+        })
+    );
     return;
   }
 

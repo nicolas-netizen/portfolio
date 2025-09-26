@@ -20,17 +20,20 @@ const Contact = () => {
     setStatus(null);
 
     try {
-      await emailjs.send(
+      // Enviar todas las variables que espera el template
+      const result = await emailjs.send(
         'service_99k6d6s',
         'template_4ofqoeb',
         {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
-          to_email: 'nicolas.paniagua05f@gmail.com'
+          to_name: 'Nicolas' // Agregado para coincidir con el template
         },
         't66oFDjJXB0IxMlWn'
       );
+      
+      console.log('EmailJS result:', result);
 
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });

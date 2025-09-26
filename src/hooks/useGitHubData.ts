@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { GITHUB_CONFIG, getGitHubHeaders, MOCK_GITHUB_DATA } from '../config/github';
 
 interface GitHubUser {
   login: string;
@@ -52,14 +53,36 @@ export const useGitHubData = (username: string = 'nicolas-netizen') => {
       try {
         setData(prev => ({ ...prev, loading: true, error: null }));
 
-        // Fetch user data
-        const userResponse = await fetch(`https://api.github.com/users/${username}`);
-        if (!userResponse.ok) throw new Error('Failed to fetch user data');
+        // Fetch user data with authentication
+        const userResponse = await fetch(`https://api.github.com/users/${username}`, {
+          headers: getGitHubHeaders()
+        });
+        if (!userResponse.ok) {
+          console.error('GitHub API Error:', userResponse.status, userResponse.statusText);
+          console.log('Using mock data instead...');
+          // Usar datos mock si la API falla
+          const mockUser = MOCK_GITHUB_DATA.user as GitHubUser;
+          const mockRepos = MOCK_GITHUB_DATA.repos as GitHubRepo[];
+          
+          setData({
+            user: mockUser,
+            repos: mockRepos,
+            languages: { TypeScript: 60, JavaScript: 30, CSS: 10 },
+            loading: false,
+            error: null
+          });
+          return;
+        }
         const user: GitHubUser = await userResponse.json();
 
-        // Fetch repositories
-        const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
-        if (!reposResponse.ok) throw new Error('Failed to fetch repositories');
+        // Fetch repositories with authentication
+        const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`, {
+          headers: getGitHubHeaders()
+        });
+        if (!reposResponse.ok) {
+          console.error('GitHub API Error:', reposResponse.status, reposResponse.statusText);
+          throw new Error(`Failed to fetch repositories: ${reposResponse.status}`);
+        }
         const allRepos: GitHubRepo[] = await reposResponse.json();
         
         // Filter repositories to show only relevant ones

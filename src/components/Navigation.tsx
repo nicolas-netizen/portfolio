@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, Moon, Sun, Globe, Check, FileText } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useSpring } from 'motion/react';
@@ -66,13 +66,6 @@ const Navigation = () => {
     );
   };
 
-  const toggleTheme = () => {
-    toggleDarkMode();
-    showNotification(
-      isDark ? 'Light mode enabled' : 'Dark mode enabled',
-      'theme'
-    );
-  };
 
   return (
     <>
@@ -116,20 +109,35 @@ const Navigation = () => {
                     console.log('CV button clicked, opening PDF viewer');
                     setIsPDFOpen(true);
                   }}
-                  className="p-2 text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-500 hover:rotate-12 transition-all duration-300 flex items-center space-x-1"
+                  className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-semibold transition-all duration-300 flex items-center space-x-1.5 shadow-md hover:shadow-lg hover:scale-105"
                   aria-label="View CV"
                 >
-                  <FileText size={20} />
-                  <span className="text-sm font-medium">CV</span>
+                  <FileText size={18} />
+                  <span className="text-sm">CV</span>
                 </button>
 
-                <button
+                <motion.button
                   onClick={toggleLanguage}
-                  className="p-2 text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors"
+                  className="px-3 py-1.5 bg-gray-100 dark:bg-gray-700 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-500 rounded-lg font-medium transition-all duration-300 flex items-center space-x-2 group relative"
                   aria-label={t('nav.toggleLanguage')}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <Globe size={20} />
-                </button>
+                  <motion.div
+                    animate={{ rotate: [0, 360] }}
+                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                  >
+                    <Globe size={18} className="text-emerald-600 dark:text-emerald-400" />
+                  </motion.div>
+                  <span className="text-sm font-semibold">
+                    {i18n.language === 'es' ? 'ES' : 'EN'}
+                  </span>
+                  <motion.div
+                    className="absolute -top-1 -right-1 w-2 h-2 bg-emerald-500 rounded-full"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+                </motion.button>
 
                 <ThemeSelector />
               </div>
@@ -165,17 +173,32 @@ const Navigation = () => {
                     setIsPDFOpen(true);
                     setIsMenuOpen(false);
                   }}
-                  className="p-2 theme-text hover:text-emerald-600 dark:hover:text-emerald-500 flex items-center space-x-1"
+                  className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-semibold transition-all duration-300 flex items-center space-x-1.5 shadow-md hover:shadow-lg"
                 >
-                  <FileText size={20} />
+                  <FileText size={18} />
                   <span>CV</span>
                 </button>
-                <button
+                <motion.button
                   onClick={toggleLanguage}
-                  className="p-2 theme-text hover:text-emerald-600 dark:hover:text-emerald-500"
+                  className="px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-500 rounded-lg font-medium transition-all duration-300 flex items-center space-x-2 group"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <Globe size={20} />
-                </button>
+                  <motion.div
+                    animate={{ rotate: [0, 360] }}
+                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                  >
+                    <Globe size={18} className="text-emerald-600 dark:text-emerald-400" />
+                  </motion.div>
+                  <span className="text-sm font-semibold">
+                    {i18n.language === 'es' ? 'ES' : 'EN'}
+                  </span>
+                  <motion.div
+                    className="w-2 h-2 bg-emerald-500 rounded-full"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+                </motion.button>
                 <div onClick={(e) => e.stopPropagation()}>
                   <ThemeSelector />
                 </div>

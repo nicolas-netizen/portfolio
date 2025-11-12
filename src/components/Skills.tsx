@@ -7,7 +7,6 @@ import {
   SiHtml5,
   SiCss3,
   SiNodedotjs,
-  SiCsharp,
   SiTailwindcss,
   SiGit,
   SiUnity,
@@ -16,6 +15,7 @@ import {
   SiJest
 } from 'react-icons/si';
 import { motion } from 'motion/react';
+import CSharpLogo from './CSharpLogo';
 
 interface TechSkill {
   name: string;
@@ -33,7 +33,7 @@ const Skills = () => {
     { name: 'skills.htmlcss', icon: SiHtml5, color: 'text-[#E34F26]' },
     { name: 'skills.nodejs', icon: SiNodedotjs, color: 'text-[#339933]' },
     { name: 'skills.python', icon: SiPython, color: 'text-[#3776AB]' },
-    { name: 'skills.csharp', icon: SiCsharp, color: 'text-[#239120]' },
+    { name: 'skills.csharp', icon: CSharpLogo, color: '' },
     { name: 'skills.tailwind', icon: SiTailwindcss, color: 'text-[#06B6D4]' },
     { name: 'skills.git', icon: SiGit, color: 'text-[#F05032]' },
     { name: 'skills.postman', icon: SiPostman, color: 'text-[#FF6C37]' },
@@ -111,7 +111,11 @@ const Skills = () => {
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <skill.icon className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 ${skill.color} mb-2 sm:mb-3 transition-transform group-hover:scale-110`} />
+                  {skill.name === 'skills.csharp' ? (
+                    <CSharpLogo className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mb-0 transition-transform group-hover:scale-110" />
+                  ) : (
+                    <skill.icon className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 ${skill.color} mb-2 sm:mb-3 transition-transform group-hover:scale-110`} />
+                  )}
                 </motion.div>
                 <span className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 text-center leading-tight">
                   {t(skill.name)}

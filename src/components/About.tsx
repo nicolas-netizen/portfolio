@@ -169,12 +169,12 @@ const About = () => {
             viewport={{ once: true }}
           >
             <motion.div 
-              className="theme-surface/90 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-3xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50"
+              className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-3xl shadow-2xl border-2 border-gray-200 dark:border-gray-700"
               whileHover={{ y: -8, scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
               <motion.p 
-                className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-4 sm:mb-6"
+                className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4 sm:mb-6"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}

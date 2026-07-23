@@ -34,6 +34,7 @@ const ProjectsNew = () => {
     'Flutter',
     'Dart',
     'MongoDB',
+    'PostgreSQL',
     'Express',
     'Tailwind CSS',
     'HTML5/CSS3'
@@ -55,17 +56,15 @@ const ProjectsNew = () => {
       category: 'mobile'
     },
     {
-      title: t('projects.chapiri.title'),
-      description: t('projects.chapiri.description'),
-      image: '/images/web1.png',
-      websiteUrl: 'https://psico-olive.vercel.app/',
-      demoUrl: 'https://psico-olive.vercel.app/',
+      title: 'Orderfy',
+      description: 'Sistema de gestión para restaurantes desarrollado con React, Node.js y PostgreSQL. Permite administrar pedidos, mesas y el flujo operativo del restaurante desde una plataforma web moderna e intuitiva.',
+      image: '/orderfy.png',
+      demoUrl: 'https://www.orderfy.com.ar/',
       technologies: [
-        t('projects.tech.react'), 
-        t('projects.tech.typescript'), 
-        t('projects.tech.tailwind')
+        t('projects.tech.react'),
+        t('projects.tech.node'),
+        'PostgreSQL'
       ],
-      sourceUrl: 'https://github.com/nicolas-netizen/psico',
       category: 'web'
     },
     {
@@ -90,7 +89,7 @@ const ProjectsNew = () => {
         t('projects.tech.react'), 
         t('projects.tech.typescript'), 
         t('projects.tech.tailwind'),
-        t('projects.tech.nodejs'),
+        t('projects.tech.node'),
         t('projects.tech.mongodb')
       ],
       sourceUrl: 'https://github.com/nicolas-netizen/gg-build',
@@ -116,7 +115,7 @@ const ProjectsNew = () => {
       demoUrl: 'https://nuevomundose.com/',
       technologies: [
         t('projects.tech.react'), 
-        t('projects.tech.nodejs'), 
+        t('projects.tech.node'), 
         t('projects.tech.tailwind'),
         t('projects.tech.express'),
         t('projects.tech.mongodb')

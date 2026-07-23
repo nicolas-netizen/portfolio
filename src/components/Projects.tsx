@@ -112,8 +112,8 @@ const ProjectsNew = () => {
       title: t('projects.nuevoMundo.title'),
       description: t('projects.nuevoMundo.description'),
       image: '/images/web3.png',
-      websiteUrl: 'https://nuevomundosolar.com/',
-      demoUrl: 'https://nuevomundosolar.com/',
+      websiteUrl: 'https://nuevomundose.com/',
+      demoUrl: 'https://nuevomundose.com/',
       technologies: [
         t('projects.tech.react'), 
         t('projects.tech.nodejs'), 

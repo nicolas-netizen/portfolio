@@ -204,20 +204,7 @@ Feel free to reach out for collaborations or opportunities!`;
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="bg-emerald-500 hover:bg-emerald-600 text-white rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 group relative flex items-center justify-center border-2 border-emerald-400 hover:border-emerald-300 ring-2 ring-emerald-300/50 hover:ring-emerald-200/70"
-        style={{
-          position: 'fixed',
-          bottom: '12px',
-          right: '12px',
-          zIndex: 9998,
-          width: '56px',
-          height: '56px',
-          maxWidth: '56px',
-          maxHeight: '56px',
-          display: 'block',
-          visibility: 'visible',
-          opacity: 1,
-        }}
+        className="fixed bottom-24 right-4 z-[110] flex h-14 w-14 items-center justify-center rounded-full border-2 border-emerald-400 bg-emerald-500 text-white ring-2 ring-emerald-300/50 transition-all duration-300 hover:scale-105 hover:border-emerald-300 hover:bg-emerald-600 hover:ring-emerald-200/70 sm:bottom-10 sm:right-6"
         data-terminal-button
       >
         <Terminal size={26} className="text-white drop-shadow-lg" />
@@ -235,7 +222,7 @@ Feel free to reach out for collaborations or opportunities!`;
 
   return (
     <motion.div
-      className="fixed bottom-12 right-6 sm:bottom-12 sm:right-8 w-[calc(100vw-2rem)] sm:w-96 h-80 sm:h-80 bg-gray-900 rounded-lg shadow-2xl z-[70] flex flex-col max-w-sm sm:max-w-none terminal-open"
+      className="fixed bottom-36 right-4 w-[calc(100vw-2rem)] max-w-sm rounded-lg bg-gray-900 shadow-2xl sm:bottom-14 sm:right-8 sm:w-96 sm:max-w-none sm:h-80 h-[22rem] z-[120] flex flex-col terminal-open"
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       exit={{ scale: 0, opacity: 0 }}

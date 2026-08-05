@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { GithubIcon, LinkedinIcon, MailIcon, ChevronDown, Code, Sparkles } from 'lucide-react';
+import { GithubIcon, LinkedinIcon, MailIcon, Code, Sparkles } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import ParticleBackground from './ParticleBackground';
 
@@ -183,22 +183,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator - Hidden on mobile */}
-      <motion.div
-        className="hidden sm:block absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.5 }}
-      >
-        <motion.div
-          className="flex flex-col items-center text-emerald-600"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <span className="text-sm font-medium mb-2">{t('common.scrollDown')}</span>
-          <ChevronDown size={24} />
-        </motion.div>
-      </motion.div>
     </section>
   );
 };

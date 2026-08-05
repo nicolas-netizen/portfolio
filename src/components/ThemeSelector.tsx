@@ -3,7 +3,13 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Palette, Sun, Moon, Check } from 'lucide-react';
 import { useTheme, Theme } from '../hooks/useTheme';
 
-const ThemeSelector = () => {
+type ThemeSelectorVariant = 'default' | 'compact';
+
+interface ThemeSelectorProps {
+  variant?: ThemeSelectorVariant;
+}
+
+const ThemeSelector = ({ variant = 'default' }: ThemeSelectorProps) => {
   const { currentTheme, isDark, changeTheme, toggleDarkMode, themes, themeConfig } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -42,6 +48,30 @@ const ThemeSelector = () => {
     cyan: Palette
   };
 
+  const triggerClasses =
+    variant === 'compact'
+      ? 'h-10 w-10 justify-center rounded-full border border-white/30 bg-white/80 text-gray-800 dark:bg-gray-800/80 dark:text-white'
+      : 'rounded-lg theme-surface border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700';
+
+  const triggerContent = (
+    <>
+      <Palette size={16} />
+      {variant === 'default' && (
+        <>
+          <span className="text-sm font-medium theme-text">{themeConfig.name}</span>
+          <motion.div
+            animate={{ rotate: isOpen ? 180 : 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </motion.div>
+        </>
+      )}
+    </>
+  );
+
   return (
     <div className="relative">
       <motion.button
@@ -49,20 +79,11 @@ const ThemeSelector = () => {
           console.log('ThemeSelector clicked, current theme:', currentTheme);
           setIsOpen(!isOpen);
         }}
-        className="flex items-center gap-2 px-3 py-2 theme-surface border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+        className={`flex items-center gap-2 px-3 py-2 transition-colors ${triggerClasses}`}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <Palette size={16} />
-        <span className="text-sm font-medium theme-text">{themeConfig.name}</span>
-        <motion.div
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.2 }}
-        >
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-            <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </motion.div>
+        {triggerContent}
       </motion.button>
 
       <AnimatePresence>

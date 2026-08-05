@@ -1,15 +1,33 @@
 import { useTranslation } from 'react-i18next';
 import { GithubIcon, LinkedinIcon, MailIcon, Code, Sparkles } from 'lucide-react';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'motion/react';
 import ParticleBackground from './ParticleBackground';
 
 const Hero = () => {
   const { t } = useTranslation();
-  
+
   // Parallax scroll effects
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, -50]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0.8]);
+
+  // 3D tilt effect on the profile photo, following the cursor
+  const tiltX = useMotionValue(0);
+  const tiltY = useMotionValue(0);
+  const springConfig = { stiffness: 150, damping: 15, mass: 0.5 };
+  const rotateX = useSpring(useTransform(tiltY, [-0.5, 0.5], [16, -16]), springConfig);
+  const rotateY = useSpring(useTransform(tiltX, [-0.5, 0.5], [-16, 16]), springConfig);
+
+  const handlePhotoMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    tiltX.set((e.clientX - rect.left) / rect.width - 0.5);
+    tiltY.set((e.clientY - rect.top) / rect.height - 0.5);
+  };
+
+  const handlePhotoMouseLeave = () => {
+    tiltX.set(0);
+    tiltY.set(0);
+  };
 
   return (
     <section id="home" className="pt-16 sm:pt-20 md:pt-32 pb-12 sm:pb-16 md:pb-24 px-4 sm:px-6 relative overflow-hidden theme-bg min-h-screen flex flex-col">
@@ -168,17 +186,24 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             style={{ y, opacity }}
           >
-            <motion.img
-              src="/Fotonico.png"
-              alt="Nicolas Paniagua"
-              loading="eager"
-              className="rounded-full w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 object-cover mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300"
-              whileHover={{ scale: 1.05, rotate: 2 }}
-              whileTap={{ scale: 0.95 }}
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-            />
+            <motion.div
+              onMouseMove={handlePhotoMouseMove}
+              onMouseLeave={handlePhotoMouseLeave}
+              style={{ perspective: 800 }}
+            >
+              <motion.img
+                src="/Fotonico.png"
+                alt="Nicolas Paniagua"
+                loading="eager"
+                className="rounded-full w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 object-cover mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300"
+                style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              />
+            </motion.div>
           </motion.div>
         </div>
       </div>

@@ -96,6 +96,18 @@ const ProjectsNew = () => {
       category: 'ecommerce'
     },
     {
+      title: 'SparkFound',
+      description: 'Sitio web corporativo para SparkFound, un Centro de Operaciones de Seguridad de próxima generación (NG-SOC) especializado en ciberseguridad. Plataforma moderna que presenta sus servicios de detección, respuesta y prevención de amenazas para empresas de Latinoamérica.',
+      videoUrl: '/output_progressive_35908617-7131-4b73-99f3-057657459938.mp4',
+      demoUrl: 'https://www.sparkfound.tech/',
+      technologies: [
+        t('projects.tech.react'),
+        t('projects.tech.typescript'),
+        t('projects.tech.tailwind')
+      ],
+      category: 'web'
+    },
+    {
       title: t('projects.webPresentation.title'),
       description: t('projects.webPresentation.description'),
       videoUrl: '/Presentacion Página Web.mp4',

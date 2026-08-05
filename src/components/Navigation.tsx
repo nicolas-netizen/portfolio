@@ -166,7 +166,7 @@ const Navigation = () => {
                 <span className="hidden h-10 w-px bg-gradient-to-b from-transparent via-gray-300/70 to-transparent dark:via-gray-600/60 xl:block"></span>
                 <div className="hidden items-center gap-2 text-xs font-semibold uppercase tracking-wide text-emerald-500 dark:text-emerald-400 xl:flex">
                   <Rocket size={16} />
-                  <span>Proyectos 2025</span>
+                  <span>Proyectos 2026</span>
                 </div>
               </div>
             </div>

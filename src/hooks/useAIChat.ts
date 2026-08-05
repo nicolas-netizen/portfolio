@@ -344,6 +344,14 @@ const analyzeProjectData = async () => {
         technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js", "MongoDB"],
         url: "https://gg-build.vercel.app/",
         category: "ecommerce"
+      },
+      {
+        name: "SparkFound",
+        type: "Sitio Web Corporativo",
+        description: "Sitio web para SparkFound, un Centro de Operaciones de Seguridad de próxima generación (NG-SOC) de ciberseguridad",
+        technologies: ["React", "TypeScript", "Tailwind CSS"],
+        url: "https://www.sparkfound.tech/",
+        category: "web"
       }
     ],
     

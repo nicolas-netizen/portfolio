@@ -37,7 +37,7 @@ const BottomNavigation = () => {
           }
         });
       },
-      { threshold: 0.4 }
+      { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -63,6 +63,7 @@ const BottomNavigation = () => {
   }, []);
 
   const handleNavigation = (targetId: string) => {
+    setActiveSection(targetId);
     const target = document.getElementById(targetId);
     if (target) {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -76,16 +77,19 @@ const BottomNavigation = () => {
           const isActive = activeSection === item.id;
 
           return (
-            <button
+            <motion.button
               key={item.id}
               type="button"
               onClick={() => handleNavigation(item.id)}
-              className={`relative flex flex-1 min-w-[60px] items-center gap-1 overflow-hidden rounded-xl px-2 py-1 text-[10px] font-semibold uppercase tracking-wide transition-all duration-200 sm:min-w-0 sm:justify-center sm:rounded-full sm:px-3 sm:py-2 sm:text-[11px] ${
+              className={`relative flex flex-1 min-w-[60px] items-center gap-1 overflow-hidden rounded-xl px-2 py-1 text-[10px] font-semibold uppercase tracking-wide transition-colors duration-200 sm:min-w-0 sm:justify-center sm:rounded-full sm:px-3 sm:py-2 sm:text-[11px] ${
                 isActive
                   ? 'text-emerald-600 dark:text-emerald-400'
                   : 'text-gray-500 dark:text-gray-300'
               }`}
               aria-label={t(item.labelKey)}
+              whileHover={{ y: -3, scale: 1.06 }}
+              whileTap={{ scale: 0.94, y: 0 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
             >
               {isActive && (
                 <motion.span
@@ -95,10 +99,12 @@ const BottomNavigation = () => {
                 />
               )}
               <span className="relative z-10 flex flex-col items-center gap-0.5 text-[10px] sm:flex-row sm:gap-1.5">
-                <Icon size={18} />
+                <motion.span whileHover={{ rotate: [0, -10, 10, 0] }} transition={{ duration: 0.4 }}>
+                  <Icon size={18} />
+                </motion.span>
                 <span className="text-[10px] sm:text-xs">{t(item.labelKey)}</span>
               </span>
-            </button>
+            </motion.button>
           );
         })}
       </div>
